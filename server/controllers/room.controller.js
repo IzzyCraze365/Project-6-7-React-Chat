@@ -51,14 +51,12 @@ router.delete("/delete/:id", validateSession, async (req, res) => {
       user_id: req.user._id,
     });
 
-    res
-      .status(200)
-      .json({
-        message:
-          removedAnimal.deletedCount > 0
-            ? "Chat room removed"
-            : "No chat room was removed",
-      });
+    res.status(200).json({
+      message:
+      removedRoom.deletedCount > 0
+          ? "Chat room removed"
+          : "No chat room was removed",
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
