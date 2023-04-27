@@ -3,14 +3,14 @@
 
 const router = require("express").Router();
 const validateSession = require("../middleware/validate-session");
-const Message = require("../models/message.model");
+const Messages = require("../models/message.model");
 
 // http://localhost:4000/message/create
 router.post("/create", validateSession, async (req, res) => {
   try {
     const { when, user, room, body } = req.body;
 
-    const chatMessage = new Message({
+    const chatMessage = new Messages ({
       when: when,
       user: user,
       room: room,
