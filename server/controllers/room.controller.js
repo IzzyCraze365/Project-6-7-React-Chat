@@ -48,12 +48,16 @@ router.delete("/delete/:id", validateSession, async (req, res) => {
 
         const removedRoom = await Room.deleteOne({_id: id, user_id: req.user._id});
 
-        res.status(200).json({message: removedRoom.deletedCount > 0 
-            ? "Chat room removed"
-            : "No chat room was removed"});
-    } catch (error) {
-        res.status(500).json({message: error.message});
-    }
+    res.status(200).json({
+      message:
+      removedRoom.deletedCount > 0
+          ? "Chat room removed"
+          : "No chat room was removed",
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+
 });
 
 // http://localhost:4000/room/update/:id
