@@ -3,7 +3,7 @@
 
 const router = require("express").Router();
 const User = require("../models/user.model");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 //http:localhost:4000/user/create
@@ -46,7 +46,7 @@ router.post("/login", async (req, res) => {
         user.password
       );
 
-      let token = jwt.sign({ id: user._id }, proces.env.JWT, {
+      let token = jwt.sign({ id: user._id }, process.env.JWT, {
         expiresIn: 60 * 60 * 12, // ! Expires in 12 hr
       });
 
