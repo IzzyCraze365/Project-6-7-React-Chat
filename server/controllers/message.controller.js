@@ -3,21 +3,20 @@
 
 const router = require("express").Router();
 const validateSession = require("../middleware/validate-session");
-console.log ("Test1");
 const Messages = require("../models/message.model");
-console.log ("Test2");
 
 // http://localhost:4000/message/create
 router.post("/create", validateSession, async (req, res) => {
   try {
-    const { when, user, room, body } = req.body;
+    const { when, user, body } = req.body;
 
     const chatMessage = new Messages({
       when: when,
       user: user,
-      room: room,
+      room: req.room_name,
       body: body,
       user_id: req.user._id,
+      room_id: req.user.room_id
     });
 
     const newChatMessage = await chatMessage.save();
@@ -34,7 +33,7 @@ router.post("/create", validateSession, async (req, res) => {
 // http://localhost:4000/message/display-all
 router.get("/display-all", validateSession, async (req, res) => {
   try {
-    let chatMessages = await Messages.find().populate("user_id", "name");
+    let chatMessages = await Messages.find().populate("room_id", "name");
 
     res.json({
       message: "Messages currently posted in chat",
