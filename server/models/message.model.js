@@ -29,6 +29,12 @@ const MessageSchema = new mongoose.Schema({
     ref: "User",
   },
 
+  user_id: {
+    // This is our foreign key to link User
+    type: mongoose.Types.ObjectId,
+    ref: "User",
+  },
+
 });
 
 module.exports = mongoose.model("Messages", MessageSchema); //! Never forget this

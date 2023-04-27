@@ -6,6 +6,7 @@ const validateSession = require("../middleware/validate-session");
 console.log ("Test1");
 const Messages = require("../models/message.model");
 console.log ("Test2");
+
 // http://localhost:4000/message/create
 router.post("/create", validateSession, async (req, res) => {
   try {
