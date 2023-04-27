@@ -89,7 +89,7 @@ router.patch("/update/:id", validateSession, async (req, res) => {
       throw Error("Not authorized to edit chat room");
     }
 
-    res.status(200).json({ message: "Chat room updated", room: room });
+    res.status(200).json({ message: "Chat updated", room: room });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
