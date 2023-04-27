@@ -1,4 +1,5 @@
 # Project 6
+`https://github.com/burlingtoncodeacademy-students/reactchat-ashlee-and-john`
 
 ## Team A.L.J.I.
 `A`shlee `L`indstrom & `J`ohn `I`sabella
