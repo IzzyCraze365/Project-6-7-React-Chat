@@ -2,7 +2,9 @@
 // Team ALJI
 
 const mongoose = require("mongoose");
-const MessageSchema = new mongoose.Schema({
+
+const UserSchema = new mongoose.Schema({
+  // Schema determines how Objects are saved.
   firstName: {
     type: String,
     required: true,
@@ -22,11 +24,12 @@ const MessageSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
   room_id: {
-    // This is our foreign key to link User
+    // This is our foreign key to link Users
     type: mongoose.Types.ObjectId,
     ref: "Room",
   },
 });
 
-module.exports = mongoose.model("Message", MessageSchema); //! Never forget this
+module.exports = mongoose.model("User", UserSchema); //! Never forget this
