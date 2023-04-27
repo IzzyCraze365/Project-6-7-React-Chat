@@ -2,7 +2,7 @@
 // Team ALJI
 
 const mongoose = require("mongoose");
-const MessageSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   firstName: {
     type: String,
     required: true,
@@ -29,4 +29,4 @@ const MessageSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Message", MessageSchema); //! Never forget this
+module.exports = mongoose.model("User", UserSchema); //! Never forget this

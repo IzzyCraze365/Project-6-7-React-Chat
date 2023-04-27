@@ -48,7 +48,7 @@ router.delete("/delete/:id", validateSession, async (req, res) => {
 
         const removedRoom = await Room.deleteOne({_id: id, user_id: req.user._id});
 
-        res.status(200).json({message: removedAnimal.deletedCount > 0 
+        res.status(200).json({message: removedRoom.deletedCount > 0 
             ? "Chat room removed"
             : "No chat room was removed"});
     } catch (error) {
@@ -74,7 +74,7 @@ router.patch("/update/:id", validateSession, async (req, res) => {
             throw Error("Not authorized to edit chat room");
         }
 
-        res.status(200).json({message: "Chat updated", animal: animal});
+        res.status(200).json({message: "Chat updated", room: room});
     } catch (error) {
         res.status(500).json({message: error.message});
     }
