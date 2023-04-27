@@ -29,10 +29,10 @@ const MessageSchema = new mongoose.Schema({
     ref: "User",
   },
 
-  user_id: {
+  room_id: {
     // This is our foreign key to link User
     type: mongoose.Types.ObjectId,
-    ref: "User",
+    ref: "Room",
   },
 
 });

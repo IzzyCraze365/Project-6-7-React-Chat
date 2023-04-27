@@ -67,7 +67,7 @@ router.patch("/update/:id", validateSession, async (req, res) => {
         const filter = {_id: req.params.id, user_id: req.user._id};
         const roomToUpdate = {
             name: name,
-            descriptions: description,
+            description: description,
             addedUsers: addedUsers,
         };
 
