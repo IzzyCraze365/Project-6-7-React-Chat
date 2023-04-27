@@ -90,6 +90,13 @@ As this is a group project, it would be much easier to work on it if everyone ha
 
 - [ ] Add isAdmin to your user collection and build middleware that only allows admins to update and delete rooms and messages.
 
+# END OF WEEK 6, PROJECT 6
+
+
+
+
+# PROJECT 6, WEEK 7
+
 # React Chat Front End
 
 Congratulations! You have successfully completed the backend section of the project, where you utilized Postman to test your API and make sure the routes are accessible and the data flows back and forth between your server and database.
