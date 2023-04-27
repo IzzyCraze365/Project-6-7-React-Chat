@@ -3,7 +3,7 @@
 
 const router = require("express").Router();
 const User = require("../models/user.model");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 //http:localhost:4000/user/create
@@ -41,10 +41,9 @@ router.post("/login", async (req, res) => {
             user.password
           );
 
-        
-          let token = jwt.sign({id: user._id}, "best_animal_is_doggo", {
-            expiresIn: 60 * 60 * 2, // Expires in 2 hr
-          });
+      let token = jwt.sign({ id: user._id }, process.env.JWT, {
+        expiresIn: 60 * 60 * 12, // ! Expires in 12 hr
+      });
 
           res.status(200).json({
             message: passwordMatch ? "passwords matched" : "passwords do not match",

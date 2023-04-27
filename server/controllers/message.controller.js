@@ -3,14 +3,15 @@
 
 const router = require("express").Router();
 const validateSession = require("../middleware/validate-session");
+console.log ("Test1");
 const Messages = require("../models/message.model");
-
+console.log ("Test2");
 // http://localhost:4000/message/create
 router.post("/create", validateSession, async (req, res) => {
   try {
     const { when, user, room, body } = req.body;
 
-    const chatMessage = new Messages ({
+    const chatMessage = new Messages({
       when: when,
       user: user,
       room: room,
@@ -32,7 +33,7 @@ router.post("/create", validateSession, async (req, res) => {
 // http://localhost:4000/message/display-all
 router.get("/display-all", validateSession, async (req, res) => {
   try {
-    let chatMessages = await Message.find().populate("user_id", "name");
+    let chatMessages = await Messages.find().populate("user_id", "name");
 
     res.json({
       message: "Messages currently posted in chat",
@@ -49,7 +50,7 @@ router.delete("/delete/:id", validateSession, async (req, res) => {
     const id = req.params.id;
     console.log("Message ID", id);
 
-    const chatMessagesFound = await Message.find({
+    const chatMessagesFound = await Messages.find({
       _id: req.params.id,
       user_id: req.user._id,
     });
@@ -57,7 +58,7 @@ router.delete("/delete/:id", validateSession, async (req, res) => {
       throw Error("404 Messages Not Found");
     }
     console.log(req.user._id); //! TEST
-    const removedChatMessage = await Message.deleteOne({
+    const removedChatMessage = await Messages.deleteOne({
       _id: id,
       user_id: req.user._id,
     });
@@ -86,7 +87,7 @@ router.patch("/update/:id", validateSession, async (req, res) => {
     };
 
     const returnUpdatedChatMessage = { new: true }; //default set to false
-    const chatMessage = await Message.findOneAndUpdate(
+    const chatMessage = await Messages.findOneAndUpdate(
       filter,
       chatMessageToUpdate,
       returnUpdatedChatMessage
