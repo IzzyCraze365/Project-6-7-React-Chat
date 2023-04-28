@@ -20,14 +20,13 @@ router.post("/create", async (req, res) => {
 
     const newUser = await user.save(); // Awaits Input
 
-    let token = jwt.sign({ id: newUser._id }, process.env.JWT, {
-      expiresIn: 60 * 60 * 48, //! Token expires in 2 days
+    let adminToken = jwt.sign({ id: newUser._id }, process.env.JWT, {
     });
 
     res.status(200).json({
       user: newUser,
       message: "Created new React Chat user",
-      token: token,
+      adminToken: adminToken,
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -63,7 +62,8 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// http://localhost:4000/user/delete/:id //TODO This needs to be finished (we missed it)
+
+// http://localhost:4000/user/delete/:id
 router.delete("/delete/:id", async (req, res) => {
   // Deletes User based on specific ID
   try {
@@ -90,7 +90,7 @@ router.delete("/delete/:id", async (req, res) => {
   }
 });
 
-// http://localhost:4000/user/update/:id //TODO This needs to be finished (we missed it)
+// http://localhost:4000/user/update/:id 
 router.patch("/update/:id", async (req, res) => {
   try {
     const { firstName, lastName, email, password } = req.body; // paramters that need to be updated by a User

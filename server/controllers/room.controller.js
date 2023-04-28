@@ -3,6 +3,8 @@
 
 // Variable List
 const router = require("express").Router();
+
+const validateAdmin = require("../middleware/validate-admin"); // Middleware to validate if User has Admin Access
 const validateSession = require("../middleware/validate-session"); // Middleware to validate tokens
 const Room = require("../models/room.model"); // Reference specific model
 
@@ -35,7 +37,7 @@ router.get("/display-all", validateSession, async (req, res) => {
 });
 
 // http://localhost:4000/room/delete/:id
-router.delete("/delete/:id", validateSession, async (req, res) => {
+router.delete("/delete/:id", validateSession, validateAdmin, async (req, res) => {
   // Deletes Room based on specific ID
   try {
     const id = req.params.id;
@@ -67,7 +69,7 @@ router.delete("/delete/:id", validateSession, async (req, res) => {
 });
 
 // http://localhost:4000/room/update/:id
-router.patch("/update/:id", validateSession, async (req, res) => {
+router.patch("/update/:id", validateSession, validateAdmin, async (req, res) => {
   try {
     const { name, description, addedUsers } = req.body;
     const filter = { _id: req.params.id, user_id: req.user._id }; // Confirms the person logged in is the person who created the Room
@@ -89,7 +91,7 @@ router.patch("/update/:id", validateSession, async (req, res) => {
       throw Error("Not authorized to edit chat room");
     }
 
-    res.status(200).json({ message: "Chat updated", room: room });
+    res.status(200).json({ message: "Chat Room Updated", room: room });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
