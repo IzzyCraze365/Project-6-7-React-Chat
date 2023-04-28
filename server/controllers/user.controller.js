@@ -69,6 +69,12 @@ router.delete("/delete/:id", async (req, res) => {
   try {
     const id = req.params.id;
 
+    const userFound = await User.find({
+      _id: req.params.id,     
+    });
+    if (userFound.length === 0) {
+      throw Error("404 User Not Found");
+    };
     const removedUser = await User.deleteOne({
       _id: id,
     });
@@ -88,7 +94,9 @@ router.delete("/delete/:id", async (req, res) => {
 router.patch("/update/:id", async (req, res) => {
   try {
     const { firstName, lastName, email, password } = req.body; // paramters that need to be updated by a User
-    const filter = { _id: req.params.id, user_id: req.user._id }; // Confirms the person logged in can update the profile
+    const filter = { 
+      _id: req.params.id, 
+    }; // Confirms the person logged in can update the profile
     const userToUpdate = {
       // paramters that need to be changed when updating a User
       firstName: firstName,
