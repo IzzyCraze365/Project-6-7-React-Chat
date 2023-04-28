@@ -25,11 +25,10 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
 
-  room_id: {
-    // This is our foreign key to link Users
-    type: mongoose.Types.ObjectId,
-    ref: "Room",
-  },
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  }
 });
 
 module.exports = mongoose.model("User", UserSchema); //! Never forget this

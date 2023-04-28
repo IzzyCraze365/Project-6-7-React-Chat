@@ -1,0 +1,646 @@
+{
+	"info": {
+		"_postman_id": "9b75cab2-6ba2-40d5-8e48-4601bfce7e6b",
+		"name": "6.5 Reach Chat - Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26874299"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"John\",\r\n  \"lastName\": \"Wick\",\r\n  \"email\": \"jwick@puppyfinder.com\",\r\n  \"password\": \"focusCommitment1979\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/user/create",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"jwick@puppyfinder.com\",\r\n    \"password\": \"focusCommitment1979\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"login"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Harold\",\r\n    \"lastName\": \"Wick\",\r\n    \"email\": \"jwick@puppyfinder.com\",\r\n    \"password\": \"focusCommitment1979\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/user/update/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"update",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "644be4698655a802dc7da4c9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/user/delete/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "644bd642d1e5a87997dd3068"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rooms",
+			"item": [
+				{
+					"name": "Create Room",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Continental 2\",\r\n  \"description\": \"No business conducted\",\r\n  \"addedUsers\": [\"John Wick\", \"Winston\", \"Ms. Perkins\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/room/create",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"room",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Display All Rooms",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/room/display-all",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"room",
+								"display-all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Room",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Administrator",
+								"value": "{{adminToken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Continental Italy\",\r\n    \"description\": \"Find New Friends\",\r\n    \"addedUsers\": [\"John Wick\", \"Winston\", \"Ms. Perkins\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/room/update/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"room",
+								"update",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "644c0e99843bf7da16bbadfb"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Room (DOES NOT WORK)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Administrator",
+								"value": "{{adminToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/room/delete/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"room",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "644c0e99843bf7da16bbadfb"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "Create Message",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"when\": \"2018-07-15T20:00:47.696Z\",\r\n  \"user\": \"John\",\r\n  \"room\": \"Main\",\r\n  \"body\": \"I really want to attend NASA's DEVELOP program this summer!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/message/create",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"message",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Display All Messages",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/message/display-all/:room",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"message",
+								"display-all",
+								":room"
+							],
+							"variable": [
+								{
+									"key": "room",
+									"value": "644c16605fc94fa890e36e7a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Message",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"when\": \"2018-07-15T20:00:47.696Z\",\r\n    \"user\": \"John\",\r\n    \"room\": \"Fantasy\",\r\n    \"body\": \"I really want to attend Dog Camp this summer!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/message/update/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"message",
+								"update",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "644c0fc500c1985e692048e5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Message",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Administrator",
+								"value": "{{adminToken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/message/delete/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"message",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "644c0fc500c1985e692048e5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin Access",
+			"item": [
+				{
+					"name": "Delete Message Admin",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Administrator",
+								"value": "{{adminToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/admin/message/delete/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"admin",
+								"message",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "644ade077340d8efdbfd797c"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Room Admin",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Administrator",
+								"value": "{{adminToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Continental Italy\",\r\n    \"description\": \"Find New Friends\",\r\n    \"addedUsers\": [\"John Wick\", \"Winston\", \"Ms. Perkins\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/admin/room/update/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"admin",
+								"room",
+								"update",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "644addb47340d8efdbfd7968"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Room Admin",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Administrator",
+								"value": "{{adminToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/admin/room/delete/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"admin",
+								"room",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "644addb07340d8efdbfd7965"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

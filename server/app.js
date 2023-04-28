@@ -4,6 +4,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
+const adminController = require("./controllers/admin.controller");
 const messageController = require("./controllers/message.controller");
 const roomController = require("./controllers/room.controller");
 const userController = require("./controllers/user.controller");
@@ -18,6 +19,7 @@ const db = mongoose.connection;
 db.once("open", () => console.log("Connected to the DB"));
 
 app.use(express.json());
+app.use("/admin", adminController);
 app.use("/user", userController);
 app.use("/room", roomController);
 app.use("/message", messageController);
