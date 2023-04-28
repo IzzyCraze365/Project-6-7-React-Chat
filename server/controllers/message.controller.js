@@ -3,8 +3,6 @@
 
 // Variable List
 const router = require("express").Router();
-
-const validateAdmin = require("../middleware/validate-admin"); // Middleware to validate if User has Admin Access
 const validateSession = require("../middleware/validate-session"); // Middleware to validate tokens
 const Messages = require("../models/message.model"); // Reference specific model
 
@@ -35,7 +33,7 @@ router.post("/create", validateSession, async (req, res) => {
 router.get("/display-all/:room", validateSession, async (req, res) => {
   try {
     const room = req.params.room;
-    let chatMessages = await Messages.find({room: room}).populate("room"); // Displays Messages based on room they were created in
+    let chatMessages = await Messages.find({ room: room }).populate("room"); // Displays Messages based on room they were created in
 
     res.json({
       message: "Messages currently posted in chat Room",
@@ -47,7 +45,7 @@ router.get("/display-all/:room", validateSession, async (req, res) => {
 });
 
 // http://localhost:4000/message/delete/:id
-router.delete("/delete/:id", validateSession, validateAdmin, async (req, res) => {
+router.delete("/delete/:id", validateSession, async (req, res) => {
   // Deletes Message based on specific Message ID
   try {
     const id = req.params.id;
