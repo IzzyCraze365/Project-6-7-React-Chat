@@ -71,7 +71,7 @@ Your room document in your `rooms` collection should resemble the following:
 
 ### Messages
 
-- [ ] Display all messages within a room endpoint
+- [X] Display all messages within a room endpoint
 - [X] Create a message within a room endpoint
 - [X] Update a message within a room endpoint
 - [X] Delete a message within a room endpoint
