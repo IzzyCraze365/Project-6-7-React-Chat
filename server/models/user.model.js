@@ -2,7 +2,9 @@
 // Team ALJI
 
 const mongoose = require("mongoose");
+
 const UserSchema = new mongoose.Schema({
+  // Schema determines how Objects are saved.
   firstName: {
     type: String,
     required: true,
@@ -24,7 +26,7 @@ const UserSchema = new mongoose.Schema({
   },
 
   room_id: {
-    // This is our foreign key to link User
+    // This is our foreign key to link Users
     type: mongoose.Types.ObjectId,
     ref: "Room",
   },

@@ -61,29 +61,29 @@ Your room document in your `rooms` collection should resemble the following:
 
 ### Users
 
-- [x] Create user endpoint
-- [x] Login user endpoint
+- [X] Create user endpoint
+- [X] Login user endpoint
 
 ### Rooms
 
-- [x] Create endpoint
-- [x] Display all rooms endpoint
+- [X] Create endpoint
+- [X] Display all rooms endpoint
 
 ### Messages
 
 - [ ] Display all messages within a room endpoint
-- [ ] Create a message within a room endpoint
-- [ ] Update a message within a room endpoint
-- [ ] Delete a message within a room endpoint
+- [X] Create a message within a room endpoint
+- [X] Update a message within a room endpoint
+- [X] Delete a message within a room endpoint
 
 ## Icebox
 
 As this is a group project, it would be much easier to work on it if everyone had access to the same data. For that reason:
 
-- [x] Setup MongoDB Atlas cluster and utilize it to CRUD your database for this project. You must utilize .dotenv in this project to hide your username, password, and your connection string away from prying eyes of other GitHub users.
+- [X] Setup MongoDB Atlas cluster and utilize it to CRUD your database for this project. You must utilize .dotenv in this project to hide your username, password, and your connection string away from prying eyes of other GitHub users.
 
-- [x] Add `update` and `delete` endpoints to your `rooms` controller
-- [x] Add `update` and `delete` endpoints to your `users` controller
+- [X] Add `update` and `delete` endpoints to your `rooms` controller
+- [ ???? ] Add `update` and `delete` endpoints to your `users` controller
 
 > HINT
 > Allowing updates on users means that collection associations need to be based on things user **CANNOT** change.

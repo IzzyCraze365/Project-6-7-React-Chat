@@ -4,6 +4,7 @@
 const mongoose = require("mongoose");
 
 const RoomSchema = new mongoose.Schema({
+  // Schema determines how Objects are saved.
   name: {
     type: String,
     required: true,
@@ -16,7 +17,9 @@ const RoomSchema = new mongoose.Schema({
     type: Array,
     required: true,
   },
+
   user_id: {
+    // This is our foreign key to link Users
     type: mongoose.Types.ObjectId,
     ref: "User",
   },
