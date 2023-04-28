@@ -22,7 +22,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  
+
   room_id: {
     // This is our foreign key to link User
     type: mongoose.Types.ObjectId,
