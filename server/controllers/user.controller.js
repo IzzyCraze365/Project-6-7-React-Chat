@@ -28,13 +28,20 @@ router.post("/create", async (req, res) => {
       expiresIn: 60 * 60 * 4, // Provides a token if the passwords match.  //! Token expires in 4 hr
     });
 
-    res.status(200).json({
-      user: newUser,
-      message: user.isAdmin
-        ? "New Administrative Reach Chat User Created"
-        : "Created new React Chat user",
-      Token: user.isAdmin ? adminToken : token,
-    });
+    if (user.isAdmin) {
+      res.json({
+        user: newUser,
+        message: "New Administrative React Chat User Created",
+        token: token,
+        adminToken: adminToken,
+      });
+    } else {
+      res.json({
+        user: newUser,
+        message: "Created new React Chat user",
+        token: token,
+      });
+    }
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -52,30 +59,33 @@ router.post("/login", async (req, res) => {
         req.body.password,
         user.password
       );
+      let adminToken = jwt.sign({ id: user._id }, process.env.JWT, {
+        expiresIn: 60 * 60 * 4, // Provides a token if the user is Admin. //! Token expires in 4 hr
+      });
+      let token = jwt.sign({ id: user._id }, process.env.JWT, {
+        expiresIn: 60 * 60 * 4, // Provides a token if the passwords match.  //! Token expires in 4 hr
+      });
 
       if (user.isAdmin) {
-        let adminToken = jwt.sign({ id: newUser._id }, process.env.JWT, {
-          expiresIn: 60 * 60 * 4, // Provides a token if the user is Admin. //! Token expires in 4 hr
-        });
-        res.status(200).json({
+        res.json({
           message: passwordMatch
-            ? "passwords matched"
-            : "passwords do not match",
-          Token: passwordMatch ? adminToken : "invalid token",
+            ? "Administrator Logged In"
+            : "Incorrect Password",
+          Token: passwordMatch ? token : "invalid token",
+          AdminToken: passwordMatch ? adminToken : adminToken,
         });
       } else {
-        let token = jwt.sign({ id: user._id }, process.env.JWT, {
-          expiresIn: 60 * 60 * 4, // Provides a token if the passwords match.  //! Token expires in 4 hr
-        });
-        res.status(200).json({
+        res.json({
           message: passwordMatch
-            ? "passwords matched"
-            : "passwords do not match",
-          token: passwordMatch ? token : "invalid token",
+            ? "React Chat User Logged In"
+            : "Incorrect Password",
+          Token: passwordMatch ? token : "invalid token",
         });
       }
     } else {
-      res.json({ message: "Email not found" });
+      res.json({
+        message: "User Not found",
+      });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });

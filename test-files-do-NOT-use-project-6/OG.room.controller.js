@@ -63,6 +63,38 @@ router.patch("/update/:id", validateSession, async (req, res) => {
   }
 });
 
-//! ONLY AN ADMIN CAN DELETE ROOMS (see admin.controller.js)
+//! ONLY AN ADMIN CAN DELETE ROOMS
+// http://localhost:4000/room/delete/:id
+/* 
+router.delete("/delete/:id", validateSession, async (req, res) => {
+  // Deletes Room based on specific ID
+  try {
+    const id = req.params.id;
+    const roomsFound = await Room.find({
+      // Confirms the person logged in is the person who created the Room
+      _id: req.params.id,
+      user_id: req.user._id,
+    });
 
+    if (roomsFound.length === 0) {
+      throw Error("Not authorized to delete this chat room");
+    }
+
+    const removedRoom = await Room.deleteOne({
+      // Only the Room creator can delete it
+      _id: id,
+      user_id: req.user._id,
+    });
+
+    res.status(200).json({
+      message:
+        removedRoom.deletedCount > 0
+          ? "Chat room removed"
+          : "No chat room was removed",
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+ */
 module.exports = router; //! NEVER FORGET ME!!!!!
