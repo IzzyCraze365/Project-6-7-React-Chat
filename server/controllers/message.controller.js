@@ -13,10 +13,10 @@ router.post("/create", validateSession, async (req, res) => {
     const chatMessage = new Messages({
       when: when,
       user: user,
-      room: req.room_name,
+      room: room,
       body: body,
       user_id: req.user._id, // Auto-Generated
-      room_id: req.user.room._id, // Auto-Generated
+      // room_id: req.room._id, // Auto-Generated
     });
 
     const newChatMessage = await chatMessage.save(); // Awaits the User Input
@@ -31,9 +31,10 @@ router.post("/create", validateSession, async (req, res) => {
 });
 
 // http://localhost:4000/message/display-all
-router.get("/display-all", validateSession, async (req, res) => {
+router.get("/display-all/:room", validateSession, async (req, res) => {
   try {
-    let chatMessages = await Messages.find().populate("room_id", "name"); // Displays Messages based on provided ID
+    const room = req.params.room;
+    let chatMessages = await Messages.find({room: room}).populate("room"); // Displays Messages based on room
 
     res.json({
       message: "Messages currently posted in chat Room",
