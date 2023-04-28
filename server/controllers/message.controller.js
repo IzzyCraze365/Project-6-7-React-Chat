@@ -3,6 +3,7 @@
 
 // Variable List
 const router = require("express").Router();
+const validateAdmin = require("../middleware/validate-admin");
 const validateSession = require("../middleware/validate-session"); // Middleware to validate tokens
 const Messages = require("../models/message.model"); // Reference specific model
 
@@ -46,7 +47,7 @@ router.get("/display-all/:room", validateSession, async (req, res) => {
 });
 
 // http://localhost:4000/message/delete/:id
-router.delete("/delete/:id", validateSession, async (req, res) => {
+router.delete("/delete/:id", validateSession, validateAdmin, async (req, res) => {
   // Deletes Message based on specific Message ID
   try {
     const id = req.params.id;
