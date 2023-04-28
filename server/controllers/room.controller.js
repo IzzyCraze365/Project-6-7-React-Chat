@@ -3,6 +3,7 @@
 
 // Variable List
 const router = require("express").Router();
+
 const validateAdmin = require("../middleware/validate-admin"); // Middleware to validate if User has Admin Access
 const validateSession = require("../middleware/validate-session"); // Middleware to validate tokens
 const Room = require("../models/room.model"); // Reference specific model

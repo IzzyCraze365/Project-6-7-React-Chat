@@ -4,6 +4,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
 const validateAdmin = async (req, res, next) => {
+
   try {
     const adminToken = req.headers.administrator;
     const decodedAdminToken = await jwt.verify(adminToken, process.env.JWT);
