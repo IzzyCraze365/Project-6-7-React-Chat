@@ -71,6 +71,7 @@ Your room document in your `rooms` collection should resemble the following:
 - [x] Update a message within a room endpoint
 - [x] Delete a message within a room endpoint
 
+
 ## Icebox
 
 As this is a group project, it would be much easier to work on it if everyone had access to the same data. For that reason:

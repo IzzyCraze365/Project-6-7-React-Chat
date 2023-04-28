@@ -34,7 +34,7 @@ router.post("/create", validateSession, async (req, res) => {
 router.get("/display-all/:room", validateSession, async (req, res) => {
   try {
     const room = req.params.room;
-    let chatMessages = await Messages.find({room: room}).populate("room"); // Displays Messages based on room
+    let chatMessages = await Messages.find({room: room}).populate("room"); // Displays Messages based on room they were created in
 
     res.json({
       message: "Messages currently posted in chat Room",
