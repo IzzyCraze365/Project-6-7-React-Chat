@@ -3,7 +3,8 @@
 
 // Variable List
 const router = require("express").Router();
-const validateAdmin = require("../middleware/validate-admin");
+
+const validateAdmin = require("../middleware/validate-admin"); // Middleware to validate if User has Admin Access
 const validateSession = require("../middleware/validate-session"); // Middleware to validate tokens
 const Room = require("../models/room.model"); // Reference specific model
 
@@ -90,7 +91,7 @@ router.patch("/update/:id", validateSession, validateAdmin, async (req, res) => 
       throw Error("Not authorized to edit chat room");
     }
 
-    res.status(200).json({ message: "Chat Room updated", room: room });
+    res.status(200).json({ message: "Chat Room Updated", room: room });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

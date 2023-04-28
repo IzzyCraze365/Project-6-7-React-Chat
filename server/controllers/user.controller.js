@@ -20,13 +20,8 @@ router.post("/create", async (req, res) => {
 
     const newUser = await user.save(); // Awaits Input
 
-    // let token = jwt.sign({ id: newUser._id }, process.env.JWT, {
-    //   expiresIn: 60 * 60 * 48, //! Token expires in 2 days
-    // }); 
-
-    let adminToken = jwt.sign({id: newUser._id}, process.env.JWT, {
-
-    })
+    let adminToken = jwt.sign({ id: newUser._id }, process.env.JWT, {
+    });
 
     res.status(200).json({
       user: newUser,
@@ -67,7 +62,8 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// http://localhost:4000/user/delete/:id 
+
+// http://localhost:4000/user/delete/:id
 router.delete("/delete/:id", async (req, res) => {
   // Deletes User based on specific ID
   try {

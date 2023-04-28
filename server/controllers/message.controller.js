@@ -3,7 +3,8 @@
 
 // Variable List
 const router = require("express").Router();
-const validateAdmin = require("../middleware/validate-admin");
+
+const validateAdmin = require("../middleware/validate-admin"); // Middleware to validate if User has Admin Access
 const validateSession = require("../middleware/validate-session"); // Middleware to validate tokens
 const Messages = require("../models/message.model"); // Reference specific model
 
@@ -17,7 +18,6 @@ router.post("/create", validateSession, async (req, res) => {
       room: room,
       body: body,
       user_id: req.user._id, // Auto-Generated
-      // room_id: req.room._id, // Auto-Generated
     });
 
     const newChatMessage = await chatMessage.save(); // Awaits the User Input
