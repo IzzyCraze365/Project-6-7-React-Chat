@@ -13,7 +13,7 @@ router.post("/create", validateSession, async (req, res) => {
     const chatMessage = new Messages({
       when: when,
       user: user,
-      room: room,
+      room: req.room_name,
       body: body,
       user_id: req.user._id, // Auto-Generated
       room_id: req.user.room._id, // Auto-Generated
