@@ -84,7 +84,7 @@ As this is a group project, it would be much easier to work on it if everyone ha
 > HINT
 > Allowing updates on users means that collection associations need to be based on things user **CANNOT** change.
 
-- [ ] Add isAdmin to your user collection and build middleware that only allows admins to update and delete rooms and messages.
+- [x] Add isAdmin to your user collection and build middleware that only allows admins to update and delete rooms and messages.
 
 # END OF WEEK 6, PROJECT 6
 
