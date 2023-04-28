@@ -69,8 +69,16 @@ router.delete("/delete/:id", async (req, res) => {
   try {
     const id = req.params.id;
 
+    const userFound = await User.find({
+      _id: req.params.id,
+      user_id: req.user._id,     
+    });
+    if (userFound.length === 0) {
+      throw Error("404 User Not Found");
+    };
     const removedUser = await User.deleteOne({
       _id: id,
+      user_id: req.user._id,
     });
 
     res.status(200).json({
