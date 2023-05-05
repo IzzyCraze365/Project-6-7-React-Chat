@@ -51,7 +51,7 @@ const RoomCreate = (props) => {
             </FormGroup>
             <FormGroup>
                 <Label>ChatRoom Users:</Label>
-                <Input type="array" value={addedUsers} onChange={(e) => setName(e.target.value)} />
+                <Input type="array" value={addedUsers} onChange={(e) => setAddedUsers(e.target.value)} />
             </FormGroup>
             <div className='d-grid gap-2 mb-4'>
                 <Button type='submit' color='success'>Create Room
