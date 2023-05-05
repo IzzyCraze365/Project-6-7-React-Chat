@@ -1,3 +1,6 @@
+// Project 7: React Chat
+// Team ALJI
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
