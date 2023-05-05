@@ -7,7 +7,7 @@ import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 const RoomCreate = (props) => {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
-    const [addedUsers, setAddedUsers] = useState("");
+    const [addedUsers, setAddedUsers] = useState([]);
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -40,11 +40,23 @@ const RoomCreate = (props) => {
     return ( 
         <>
         <h3>Create a Chat Room</h3>
-        <Form>
+        <Form onSubmit={handleSubmit}>
             <FormGroup>
                 <Label>ChatRoom Name:</Label>
-                <Input />
+                <Input type="text" value={name} onChange={(e) => setName(e.target.value)} />
             </FormGroup>
+            <FormGroup>
+                <Label>ChatRoom Description:</Label>
+                <Input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+            </FormGroup>
+            <FormGroup>
+                <Label>ChatRoom Users:</Label>
+                <Input type="array" value={addedUsers} onChange={(e) => setName(e.target.value)} />
+            </FormGroup>
+            <div className='d-grid gap-2 mb-4'>
+                <Button type='submit' color='success'>Create Room
+                </Button>
+            </div>
         </Form>
         </>
      );
