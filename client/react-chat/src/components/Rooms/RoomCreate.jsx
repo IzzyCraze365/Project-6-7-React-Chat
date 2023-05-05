@@ -1,5 +1,6 @@
 // Project 7: React Chat
 // Team ALJI
+// Push Check
 
 import React, { useState } from 'react';
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
