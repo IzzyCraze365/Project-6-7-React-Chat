@@ -1,7 +1,7 @@
 // Project 7: React Chat
 // Team ALJI
 
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
