@@ -1,6 +1,6 @@
 // Project 7: React Chat
 // Team ALJI
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Col, Container, Row, Label, FormGroup, Input, Form } from "reactstrap";
 
@@ -13,12 +13,16 @@ const RoomEdit = (props) => {
 
     const {id} = useParams();
 
-// TODO: Use Effect to access a function of getRoomByID
+    // useEffect(() => {
+    //     if(props.token) {
+    //         getRoomById();
+    //     }
+    // }, [props.token]);
 
     async function handleSubmit(e) {
         e.preventDefault();
 
-        let url = `http://localhost:4000/room/create`;
+        let url = `http://localhost:4000/room/update/` + id;
 
         let bodyObject = {
             name: name,
@@ -42,20 +46,46 @@ const RoomEdit = (props) => {
             console.log(data);
 
             if(data.message === "Chat Room Updated") {
-                navigate("/") // TODO: figure out where to navigate to
+                navigate("/room/display-all") // TODO: confirm if this is the correct url to navigate to
             }
-
-
-            //TODO create a getRoomByID function
-
         } catch (error) {
             console.error(error.message);
         };
     }
+    
+        //TODO create a getRoomByID function - We don't have a view one room function... do we need one?
 
     return ( 
         <>
-        
+        <Container>
+            <Row>
+                <Col md="4">
+                    <h4>Update Room</h4>
+                </Col>
+                <Col md="8">
+                    <Form onSubmit={handleSubmit}>
+                        <FormGroup>
+                            <Label>ChatRoom Name: </Label>
+                            <Input type='text' value={name} onChange={(e) => setName(e.target.value)} />
+                        </FormGroup>
+
+                        <FormGroup>
+                            <Label>ChatRoom Description: </Label>
+                            <Input type='text' value={description} onChange={(e) => setDescription(e.target.value)} />
+                        </FormGroup>
+
+                        <FormGroup>
+                            <Label>Added Users: </Label>
+                            <Input type='array' value={addedUsers} onChange={(e) => setAddedUsers(e.target.value)} />
+                        </FormGroup>
+
+                        <div className='d-grid gap-2 mb-4'>
+                            <Button type='submit' color='success'>Update Room</Button>
+                        </div>
+                    </Form>
+                </Col>
+            </Row>
+        </Container>
         </>
      );
 }

@@ -1,18 +1,40 @@
 // Project 7: React Chat
 // Team ALJI
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Col, Container, Row } from "reactstrap";
-// TODO: import RoomCreate and MessageIndex
+import RoomCreate from './RoomCreate';
+
+// TODO: import UserEdit and MessageIndex
 
 const RoomIndex = (props) => {
+    const [roomArray, setRoomArray] = useState([]);
+
+    async function getAllRooms() {
+        let url = `http://localhost:4000/room/display-all`;
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", props.token);
+
+        const requestOptions = {
+            headers: myHeaders,
+            method: "GET",
+        };
+        try {
+            const response = await fetch(url, requestOptions);
+            const data = await response.json();
+            console.log(data);
+            setRoomArray(data.log);
+        } catch (error) {
+            console.error(error.message);
+        };
+    }
 
     return ( 
         <>
         <Container>
             <Row>
                 <Col md="4">
-                    {/* Room Create */}
+                    <RoomCreate token={props.token} getAllRooms={getAllRooms} roomArray={roomArray} />
                     {/* User Edit */}
                 </Col>
                 <Col md="8">
