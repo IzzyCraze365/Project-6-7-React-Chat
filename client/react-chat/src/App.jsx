@@ -3,17 +3,35 @@
 
 //import logo from './logo.svg';
 import "./App.css";
+import React, { useEffect, useState } from 'react';
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Auth from "./components/Auth/Auth";
+import { Route, Routes } from "react-router-dom";
+import RoomIndex from "./components/Rooms/RoomIndex";
 
 function App() {
+  const [token, setToken] = useState("");
+
+  function updateToken(newToken) {
+    setToken(newToken);
+    localStorage.setItem("token", newToken);
+  };
+
+  useEffect(() => {
+    if(localStorage.getItem("token")) {
+      setToken(localStorage.getItem("token"))
+    };
+  }, []);
+
   return (
     <div>
-      <div className="App">
-        <Header />
-      </div>
-      <Auth />
+      <Header />
+      <Routes>
+        <Route path="/" element={<Auth updateToken={updateToken} />} />
+        {/* TODO: figure out what path RoomIndex should take */}
+        <Route path="/" element={<RoomIndex token={token} />} />
+      </Routes>
       <Footer />
     </div>
   );
