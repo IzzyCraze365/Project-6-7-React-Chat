@@ -42,7 +42,7 @@ const Login = (props) => {
       console.log(data);
       if (data.message === "passwords matched") {
         props.updateToken(data.token);
-        navigate("/something"); //TODO change this navigate
+        navigate("/user"); /* TODO change this navigate */
       }
     } catch (error) {
       console.error(error.message);
@@ -52,9 +52,8 @@ const Login = (props) => {
   return (
     <>
       <center>
-        <h2>Hello from "Login" inside [Auth] inside [components]</h2> //! TEST
+        {/* <h2>Hello from "Login" inside [Auth] inside [components]</h2> //! TEST */}
         <h2>Log In</h2> {/* Title */}
-      </center>
       <Form onSubmit={userLogIn}>
         {/* EMAIL START */}
         <FormGroup>
@@ -82,6 +81,7 @@ const Login = (props) => {
           </Button>
         </div>
       </Form>
+      </center>
     </>
   );
 };

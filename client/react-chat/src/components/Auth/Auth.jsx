@@ -11,11 +11,11 @@ const Auth = (props) => {
       <h2>Hello from "Auth" inside [Auth] inside [components]</h2> {/* //! TEST */}
       <Container>
         <Row>
-          <Col md="6">
-{/*             <Signup/>
+          <Col md="4">
+          <Signup updateToken={props.updateToken}/>
           </Col>
-          <Col md="6">
-            <Login /> */}
+          <Col md="4">
+          <Login updateToken={props.updateToken}/>
           </Col>
         </Row>
       </Container>

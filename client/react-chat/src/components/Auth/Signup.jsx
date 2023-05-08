@@ -8,9 +8,9 @@ import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 
 // firstName & lastName & email & password & isAdmin
 const Signup = (props) => {
-  const [firstName, setFirstName] = useState("John");
-  const [lastName, setLastName] = useState("Isabella");
-  const [email, setEmail] = useState("NewGuy@test.com");
+  const [firstName, setFirstName] = useState("New");
+  const [lastName, setLastName] = useState("Guy");
+  const [email, setEmail] = useState("NewGuy@NewGuy.com");
   const [password, setPassword] = useState("NewGuy");
   const [isAdmin, setIsAdmin] = useState("false");
 
@@ -39,10 +39,14 @@ const Signup = (props) => {
     };
 
     try {
+      console.log("Before Test"); //! TEST
       const response = await fetch(url, requestOptions);
+      console.log("Response", response); //! TEST
       const data = await response.json();
-      console.log(data);
+      console.log("Here i am"); //! TEST
+      console.log("DATA",data);
       props.updateToken(data.token);
+      console.log("Token",data.token);
     } catch (error) {
       console.error(error.message);
     }
@@ -50,7 +54,8 @@ const Signup = (props) => {
 
   return (
     <>
-      <h2>Hello from "Signup" inside [Auth] inside [components]</h2> //! TEST
+{/*       <h2>Hello from "Signup" inside [Auth] inside [components]</h2> //! TEST */}
+      <center>
       <h2 className="text-center">Signup</h2> {/* Title */}
       <Form onSubmit={userSignIn}>
         {/* FIRST NAME START */}
@@ -95,10 +100,10 @@ const Signup = (props) => {
         {/* PASSWORD END */}
         {/* ISADMIN START */}
         <FormGroup>
-          <Label>Admin?:</Label> //TODO Hide this
+          <Label>Admin?:</Label> {/* //TODO Hide this */}
           <Input /* this is where the input is pulled */
             value={isAdmin}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setIsAdmin(e.target.value)}
           />
         </FormGroup>
         {/* ISADMIN END */}
@@ -110,8 +115,10 @@ const Signup = (props) => {
           </Button>
         </div>
       </Form>
+      </center>
     </>
   );
+  
 };
 
 export default Signup;
