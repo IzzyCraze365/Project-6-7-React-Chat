@@ -8,7 +8,7 @@ import { Col, Container, Row } from "reactstrap";
 const Auth = (props) => {
   return (
     <>
-      <h2>Hello from "Auth" inside [Auth] inside [components]</h2> {/* //! TEST */}
+      {/* <h2>Hello from "Auth" inside [Auth] inside [components]</h2> */}
       <Container>
         <Row>
           <Col md="4">
