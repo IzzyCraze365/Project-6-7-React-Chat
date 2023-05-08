@@ -32,6 +32,12 @@ const RoomCreate = (props) => {
             const response = await fetch(url, requestOptions);
             const data = await response.json();
             console.log(data);
+            if (
+                data.message === "Room was created"
+              ) {
+                // TODO: have the message window display as a room-specific window
+                console.log("[Room Message Display]");
+              }
         } catch (error) {
             console.error(error.message);
         };
