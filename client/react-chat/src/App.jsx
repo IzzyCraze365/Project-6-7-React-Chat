@@ -35,7 +35,6 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Auth updateToken={updateToken} />} />
-        {/* TODO: figure out what path RoomIndex should take */}
         <Route path="/react-chat" element={<RoomIndex token={token} />} />
       </Routes>
       <Footer />
