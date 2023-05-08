@@ -8,8 +8,8 @@ import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 // email & password
 const Login = (props) => {
   // UseState variables
-  const [email, setEmail] = useState("NewGuy@test.com");
-  const [password, setPassword] = useState("NewGuy");
+  const [email, setEmail] = useState("NewGuy@NewGuy.com"); //TODO Remove NewGuy
+  const [password, setPassword] = useState("NewGuy"); //TODO Remove NewGuy
   // BrowserRouter Hook
   const navigate = useNavigate();
 
@@ -40,9 +40,12 @@ const Login = (props) => {
       const response = await fetch(url, requestOptions);
       const data = await response.json();
       console.log(data);
-      if (data.message === "passwords matched") {
+      if (
+        data.message === "React Chat User Logged In" ||
+        data.message === "Administrator Logged In"
+      ) {
         props.updateToken(data.token);
-        navigate("/user"); /* TODO change this navigate */
+        navigate("/react-chat"); // Sends you to the Room's page
       }
     } catch (error) {
       console.error(error.message);
@@ -54,33 +57,33 @@ const Login = (props) => {
       <center>
         {/* <h2>Hello from "Login" inside [Auth] inside [components]</h2> //! TEST */}
         <h2>Log In</h2> {/* Title */}
-      <Form onSubmit={userLogIn}>
-        {/* EMAIL START */}
-        <FormGroup>
-          <Label>Email:</Label>
-          <Input /* this is where the input value is pulled from */
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </FormGroup>
-        {/* EMAIL END */}
-        {/* PASSWORD START */}
-        <FormGroup>
-          <Label>Password:</Label>
-          <Input /* this is where the input is pulled */
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </FormGroup>
-        {/* PASSWORD END */}
-        <div className="d-grid gap-2 mb-4">
-          {" "}
-          {/* D-Grid, Gap of 2, Margin Bottom of 4 */}
-          <Button type="submit" color="primary">
-            Log In
-          </Button>
-        </div>
-      </Form>
+        <Form onSubmit={userLogIn}>
+          {/* EMAIL START */}
+          <FormGroup>
+            <Label>Email:</Label>
+            <Input /* this is where the input value is pulled from */
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </FormGroup>
+          {/* EMAIL END */}
+          {/* PASSWORD START */}
+          <FormGroup>
+            <Label>Password:</Label>
+            <Input /* this is where the input is pulled */
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </FormGroup>
+          {/* PASSWORD END */}
+          <div className="d-grid gap-2 mb-4">
+            {" "}
+            {/* D-Grid, Gap of 2, Margin Bottom of 4 */}
+            <Button type="submit" color="primary">
+              Log In
+            </Button>
+          </div>
+        </Form>
       </center>
     </>
   );
