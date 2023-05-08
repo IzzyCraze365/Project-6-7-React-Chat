@@ -13,6 +13,12 @@ import RoomIndex from "./components/Rooms/RoomIndex";
 function App() {
   const [token, setToken] = useState("");
 
+  useEffect(() => {
+    if(localStorage.getItem("token")) {
+      setToken(localStorage.getItem("token"))
+    };
+  }, []);
+
   function updateToken(newToken) {
     setToken(newToken);
     localStorage.setItem("token", newToken);
@@ -30,7 +36,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Auth updateToken={updateToken} />} />
         {/* TODO: figure out what path RoomIndex should take */}
-        <Route path="/" element={<RoomIndex token={token} />} />
+        <Route path="/react-chat" element={<RoomIndex token={token} />} />
       </Routes>
       <Footer />
     </div>
