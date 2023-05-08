@@ -13,6 +13,12 @@ import RoomIndex from "./components/Rooms/RoomIndex";
 function App() {
   const [token, setToken] = useState("");
 
+  useEffect(() => {
+    if(localStorage.getItem("token")) {
+      setToken(localStorage.getItem("token"))
+    };
+  }, []);
+
   function updateToken(newToken) {
     setToken(newToken);
     localStorage.setItem("token", newToken);
