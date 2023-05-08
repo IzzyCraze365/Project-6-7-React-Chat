@@ -42,15 +42,15 @@ const RoomCreate = (props) => {
         <h3>Create a Chat Room</h3>
         <Form onSubmit={handleSubmit}>
             <FormGroup>
-                <Label>ChatRoom Name:</Label>
+                <Label>Room Name: </Label>
                 <Input type="text" value={name} onChange={(e) => setName(e.target.value)} />
             </FormGroup>
             <FormGroup>
-                <Label>ChatRoom Description:</Label>
+                <Label>Room Description: </Label>
                 <Input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
             </FormGroup>
             <FormGroup>
-                <Label>ChatRoom Users:</Label>
+                <Label>Room Users: </Label>
                 <Input type="array" value={addedUsers} onChange={(e) => setAddedUsers(e.target.value)} />
             </FormGroup>
             <div className='d-grid gap-2 mb-4'>
