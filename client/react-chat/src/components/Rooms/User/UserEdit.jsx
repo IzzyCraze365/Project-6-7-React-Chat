@@ -89,7 +89,7 @@ const UserEdit = (props) => {
     return ( 
         <>
         <h2 className="text-center">Update User Information</h2> {/* Title */}
-        <Form onSubmit={navigate("/react-chat")}>
+        <Form onSubmit={handleSubmit}>
           {/* FIRST NAME START */}
           <FormGroup>
             <Label>First Name:</Label>
@@ -142,7 +142,7 @@ const UserEdit = (props) => {
           <div className="d-grid gap-2 mb-4">
             {" "}
             {/* D-Grid, Gap of 2, Margin Bottom of 4 */}
-            <Button type="submit" color="danger">
+            <Button onClick={navigate('/react-chat')} type="submit" color="danger">
               Sign Up
             </Button>
           </div>
