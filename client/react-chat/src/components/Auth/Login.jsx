@@ -44,7 +44,7 @@ const Login = (props) => {
         data.message === "React Chat User Logged In" ||
         data.message === "Administrator Logged In"
       ) {
-        props.updateToken(data.token);
+        props.updateToken(data.token, data.user._id, data.user.firstName, data.user.lastName);
         console.log(data.token);
         navigate("/react-chat"); // Sends you to the Room's page
       }

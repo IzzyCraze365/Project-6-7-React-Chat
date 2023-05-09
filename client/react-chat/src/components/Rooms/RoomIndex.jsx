@@ -1,16 +1,21 @@
 // Project 7: React Chat
 // Team ALJI
 
-import React, { useState } from 'react';
-import { Col, Container, Row } from "reactstrap";
+import React, { useState, useEffect } from 'react';
+import { Button, Col, Container, Row } from "reactstrap";
 import RoomCreate from './RoomCreate';
-import UserEdit from './User/UserEdit';
 import MessageIndex from './Messages/MessageIndex';
+import { useNavigate } from 'react-router-dom';
 
-// TODO: import UserEdit and MessageIndex
 
 const RoomIndex = (props) => {
     const [roomArray, setRoomArray] = useState([]);
+    const navigate = useNavigate();
+    const userID = props.userID;
+
+    function userEditClick() {
+        navigate(`/update/${userID}`)
+    };
 
     async function getAllRooms() {
         let url = `http://localhost:4000/room/display-all`;
@@ -35,12 +40,15 @@ const RoomIndex = (props) => {
         <>
         <Container>
             <Row>
-                <Col md="4">
+                <Col md="4" >
                     <RoomCreate token={props.token} getAllRooms={getAllRooms} roomArray={roomArray} />
-                    <UserEdit token={props.token}/>
+                    <h3>Username: {}</h3>
+                    <div>
+                        <Button type='submit' onClick={userEditClick} >Edit User</Button>
+                    </div>
                 </Col>
                 <Col md="8">
-                    <MessageIndex />
+                    <MessageIndex token={props.token} getAllRooms={getAllRooms} roomArray={roomArray}/>
                 </Col>
             </Row>
         </Container>
