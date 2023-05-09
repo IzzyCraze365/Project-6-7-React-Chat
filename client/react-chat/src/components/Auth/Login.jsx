@@ -45,6 +45,7 @@ const Login = (props) => {
         data.message === "Administrator Logged In"
       ) {
         props.updateToken(data.token);
+        console.log(data.token);
         navigate("/react-chat"); // Sends you to the Room's page
       }
     } catch (error) {
