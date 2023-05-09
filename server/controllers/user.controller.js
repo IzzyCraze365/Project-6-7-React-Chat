@@ -73,6 +73,7 @@ router.post("/login", async (req, res) => {
             : "Incorrect Password",
           token: passwordMatch ? token : "invalid token",
           adminToken: passwordMatch ? adminToken : adminToken,
+          user: user
         });
       } else {
         res.json({
@@ -80,6 +81,7 @@ router.post("/login", async (req, res) => {
             ? "React Chat User Logged In"
             : "Incorrect Password",
           token: passwordMatch ? token : "invalid token",
+          user: user
         });
       }
     } else {
