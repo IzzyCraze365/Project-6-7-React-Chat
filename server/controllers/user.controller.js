@@ -71,15 +71,15 @@ router.post("/login", async (req, res) => {
           message: passwordMatch
             ? "Administrator Logged In"
             : "Incorrect Password",
-          Token: passwordMatch ? token : "invalid token",
-          AdminToken: passwordMatch ? adminToken : adminToken,
+          token: passwordMatch ? token : "invalid token",
+          adminToken: passwordMatch ? adminToken : adminToken,
         });
       } else {
         res.json({
           message: passwordMatch
             ? "React Chat User Logged In"
             : "Incorrect Password",
-          Token: passwordMatch ? token : "invalid token",
+          token: passwordMatch ? token : "invalid token",
         });
       }
     } else {

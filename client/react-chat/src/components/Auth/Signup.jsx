@@ -42,6 +42,7 @@ const Signup = (props) => {
       const response = await fetch(url, requestOptions);
       const data = await response.json();
       props.updateToken(data.token);
+      console.log(data.token);
       navigate("/react-chat"); // Sends you to the Room's page
     } catch (error) {
       console.error(error.message);
