@@ -4,6 +4,8 @@
 import React, { useState } from 'react';
 import { Col, Container, Row } from "reactstrap";
 import RoomCreate from './RoomCreate';
+import UserEdit from './User/UserEdit';
+import MessageIndex from './Messages/MessageIndex';
 
 // TODO: import UserEdit and MessageIndex
 
@@ -35,10 +37,10 @@ const RoomIndex = (props) => {
             <Row>
                 <Col md="4">
                     <RoomCreate token={props.token} getAllRooms={getAllRooms} roomArray={roomArray} />
-                    {/* User Edit */}
+                    <UserEdit token={props.token}/>
                 </Col>
                 <Col md="8">
-                    {/* Message Index */}
+                    <MessageIndex />
                 </Col>
             </Row>
         </Container>
