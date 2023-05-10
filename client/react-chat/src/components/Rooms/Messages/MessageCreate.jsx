@@ -6,23 +6,23 @@ import { Form, FormGroup, Input, Label, Button } from "reactstrap";
 // To create boiler place use "sfc + [tab]"
 
 const MessageCreate = (props) => {
-  const [when, setWhen] = useState("");
   const [user, setUser] = useState("");
   const [room, setRoom] = useState("");
   const [body, setBody] = useState("");
 
   // functions
-  async function handleSubmit(e) {
+  async function createMessageChat(e) {
     e.preventDefault();
     let url = `http://localhost:4000/message/create`;
 
+    /* let formattedDate = date.split("T")[0]; */
+
     let bodyObject = {
-      when: when,
       user: user,
       room: room,
       body: body,
     };
-    /* let formattedDate = date.split("T")[0]; */
+    
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -37,9 +37,10 @@ const MessageCreate = (props) => {
 
     try {
       const response = await fetch(url, requestOptions);
+      console.log("response", response); //! TEST
       const data = await response.json();
-      console.log(data); //! TEST
-      props.getAllMessages();
+      console.log("DATA", data); //! TEST
+      //props.getAllMessages();
     } catch (error) {
       console.error(error.message);
     }
@@ -47,15 +48,7 @@ const MessageCreate = (props) => {
   return (
     <>
       <h3>Hello from MessageCreate inside [Messages] inside [Rooms] </h3>
-      <Form className="create" onSubmit={handleSubmit}>
-        <FormGroup>
-          <Label>When:</Label>
-          <Input
-            type="time"
-            value={when}
-            onChange={(e) => setWhen(e.target.value)}
-          />
-        </FormGroup>
+      <Form className="create" onSubmit={createMessageChat}>
 
         <FormGroup>
           <Label>User:</Label>
