@@ -40,7 +40,7 @@ const MessageCreate = (props) => {
       console.log("response", response); //! TEST
       const data = await response.json();
       console.log("DATA", data); //! TEST
-      //props.getAllMessages();
+      props.getAllMessages();
     } catch (error) {
       console.error(error.message);
     }

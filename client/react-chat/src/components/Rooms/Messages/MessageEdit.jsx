@@ -1,6 +1,8 @@
 // Project 7: React Chat
 // Team ALJI
 
+//TODO this page may not be necessary
+
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Form, Label, FormGroup, Input, Button } from "reactstrap";
@@ -23,7 +25,7 @@ const MessageEdit = (props) => {
     }
   }, [props.token]);
 
-  async function handleSubmit(e) {
+  async function editMessageChat(e) {
     e.preventDefault();
     console.log(id);
 
@@ -85,8 +87,8 @@ const MessageEdit = (props) => {
 
   return (
     <>
-      <h3>Hello from MessageCreate inside [Messages] inside [Rooms] </h3>
-      <Form className="create" onSubmit={handleSubmit}>
+      <h3>Hello from MessageEdit inside [Messages] inside [Rooms] </h3>
+      <Form className="edit" onSubmit={editMessageChat}>
         <FormGroup>
           <Label>When:</Label>
           <Input
