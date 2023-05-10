@@ -7,11 +7,11 @@ import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 
 const UserEdit = (props) => {
 
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [isAdmin, setIsAdmin] = useState(false);
+    const [firstName, setFirstName] = useState(props.firstName);
+    const [lastName, setLastName] = useState(props.lastName);
+    const [email, setEmail] = useState(props.email);
+    const [password, setPassword] = useState(props.password);
+    const [isAdmin, setIsAdmin] = useState(props.isAdmin);
     const userID = props.userID;
 
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ const UserEdit = (props) => {
         }
     }, [props.token]);
 
-    async function handleSubmit(e) {
+    async function handleEditUserSubmit(e) {
         e.preventDefault();
         console.log(id);
 
@@ -89,7 +89,7 @@ const UserEdit = (props) => {
     return ( 
         <>
         <h2 className="text-center">Update User Information</h2> {/* Title */}
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleEditUserSubmit}>
           {/* FIRST NAME START */}
           <FormGroup>
             <Label>First Name:</Label>
