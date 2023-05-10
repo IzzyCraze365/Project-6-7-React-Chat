@@ -7,6 +7,8 @@ import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 
 const UserEdit = (props) => {
 
+  console.log("PROPS TEST", props)
+
     const [firstName, setFirstName] = useState(props.firstName);
     const [lastName, setLastName] = useState(props.lastName);
     const [email, setEmail] = useState(props.email);
@@ -18,11 +20,11 @@ const UserEdit = (props) => {
 
     const {id} = useParams();
 
-    useEffect(() => {
-        if(props.token) {
-            getUserByID();
-        }
-    }, [props.token]);
+    // useEffect(() => {
+    //     if(props.token) {
+    //         getUserByID();
+    //     }
+    // }, [props.token]);
 
     async function handleEditUserSubmit(e) {
         e.preventDefault();
@@ -59,30 +61,6 @@ const UserEdit = (props) => {
             console.error(error.message)
         }
 
-    }
-
-    async function getUserByID() {
-        let url = `http://localhost:4000/user/` + id;
-        let myHeaders = new Headers();
-        myHeaders.append("Authorization", props.token);
-
-        const requestOptions  = { 
-            headers: myHeaders,
-            method: "GET",
-         }
-
-         try {
-            const response = await fetch(url, requestOptions);
-            const data  = await response.json();
-            console.log(data);
-            setFirstName(data.user.firstName);
-            setLastName(data.user.lastName);
-            setEmail(data.user.email);
-            setPassword(data.user.password);
-            setIsAdmin(data.user.isAdmin);
-         } catch (error) {
-            console.error(error.message)
-         }
     }
 
 
@@ -142,8 +120,8 @@ const UserEdit = (props) => {
           <div className="d-grid gap-2 mb-4">
             {" "}
             {/* D-Grid, Gap of 2, Margin Bottom of 4 */}
-            <Button onClick={navigate('/react-chat')} type="submit" color="danger">
-              Sign Up
+            <Button onClick={handleEditUserSubmit} type="submit" color="danger">
+              Update User
             </Button>
           </div>
         </Form>
