@@ -10,7 +10,7 @@ const MessageEdit = (props) => {
   const [when, setWhen] = useState("");
   const [user, setUser] = useState("");
   const [room, setRoom] = useState("");
-  const [body, setBody] = useState("");
+  const [body, setBody] = useState("props.chatMessage.body");
   /* let formattedDate = date.split("T")[0]; */
 
   const navigate = useNavigate();

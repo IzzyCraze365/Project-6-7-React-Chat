@@ -7,10 +7,11 @@ import MessageCreate from "./MessageCreate";
 import MessageWindow from "./MessageWindow";
 
 const MessageIndex = (props) => {
-  const [messages, setMessages] = useState([]);
+  const [chatMessage, setchatMessage] = useState([]);
+
 
   async function getAllMessages() {
-    let url = `localhost:4000/message/display-all/:room`;
+    let url = `http://localhost:4000/message/display-all/Test`/* + props.room_id */;
 
     let myHeaders = new Headers();
     myHeaders.append("Authorization", props.token);
@@ -22,8 +23,9 @@ const MessageIndex = (props) => {
     try {
       const response = await fetch(url, requestOptions);
       const data = await response.json();
-      console.log(data);
-      setMessages(data.messages);
+      console.log("DATA",data);
+      setchatMessage(data.chatMessage);
+      console.log("data.chatMessage", data.chatMessage);
     } catch (error) {
       console.error(error.message);
     }
@@ -33,14 +35,13 @@ const MessageIndex = (props) => {
       getAllMessages();
     }
   }, [props.token]);
-
   return (
     <>
       <Container className="chatWindow">
-        <h2>Hello from Message Index inside [Messages] inside [Rooms] </h2>
+{/*         <h2>Hello from Message Index inside [Messages] inside [Rooms] </h2> //! TEST */}
         <div>
           <MessageWindow
-            messages={messages}
+            chatMessage={chatMessage}
             token={props.token}
             getAllMessages={getAllMessages}
           />

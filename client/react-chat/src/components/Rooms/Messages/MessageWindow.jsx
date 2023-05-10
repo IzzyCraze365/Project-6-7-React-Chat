@@ -4,17 +4,20 @@
 import MessageSolo from "./MessageSolo";
 
 const MessageWindow = (props) => {
+  console.log("props window", props, typeof props);
   return (
     <>
-      <h2>Hello from MessageWindow inside [Messages] inside [Rooms] </h2>
-      {props.messages.map((messages, index) => (
-        <MessageSolo
-          key={index}
-          messages={messages}
-          token={props.token}
-          getAllMessages={props.getAllMessages}
-        />
-      ))}
+{/*       <h2>Hello from MessageWindow inside [Messages] inside [Rooms] </h2> //! TEST */}
+      <div>
+       {props.chatMessage.map((chatMessage, index) => (
+          <MessageSolo
+            key={index}
+            chatMessage={chatMessage}
+            token={props.token}
+            getAllMessages={props.getAllMessages}
+          />
+        ))}
+      </div>
     </>
   );
 };
