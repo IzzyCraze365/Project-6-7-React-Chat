@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom';
 
 
 const RoomIndex = (props) => {
+    let lastInitial = props.lastName.charAt(0).toUpperCase();
+    let username = props.firstName + lastInitial
     const [roomArray, setRoomArray] = useState([]);
     const navigate = useNavigate();
     const userID = props.userID;
@@ -42,13 +44,13 @@ const RoomIndex = (props) => {
             <Row>
                 <Col md="4" >
                     <RoomCreate token={props.token} getAllRooms={getAllRooms} roomArray={roomArray} />
-                    <h3>Username: {}</h3>
+                    <h3>Username: {username}</h3>
                     <div>
                         <Button type='submit' onClick={userEditClick} >Edit User</Button>
                     </div>
                 </Col>
                 <Col md="8">
-                    <MessageIndex token={props.token} getAllRooms={getAllRooms} roomArray={roomArray}/>
+                    <MessageIndex token={props.token} getAllRooms={getAllRooms} roomArray={roomArray} username={username}/>
                 </Col>
             </Row>
         </Container>
