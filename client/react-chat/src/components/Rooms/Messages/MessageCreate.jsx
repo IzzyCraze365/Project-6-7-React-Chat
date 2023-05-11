@@ -6,8 +6,9 @@ import { Form, FormGroup, Input, Label, Button } from "reactstrap";
 // To create boiler place use "sfc + [tab]"
 
 const MessageCreate = (props) => {
+/*   const { when, user, room, _id } = props.chatMessage; */
   const [user, setUser] = useState("");
-  const [room, setRoom] = useState("");
+  const [room, setRoom] = useState(props.room_id);
   const [body, setBody] = useState("");
 
   // functions
@@ -22,7 +23,6 @@ const MessageCreate = (props) => {
       room: room,
       body: body,
     };
-    
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -47,7 +47,6 @@ const MessageCreate = (props) => {
     <>
       <h3>Hello from MessageCreate inside [Messages] inside [Rooms] </h3>
       <Form className="create" onSubmit={createMessageChat}>
-
         <FormGroup>
           <Label>User:</Label>
           <Input

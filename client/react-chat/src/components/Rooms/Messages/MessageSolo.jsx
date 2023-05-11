@@ -9,6 +9,7 @@ const MessageSolo = (props) => {
   //   const navigate = useNavigate();
   const { when, user, room, _id } = props.chatMessage;
   const [body, setBody] = useState(props.chatMessage.body);
+  const [editFlag, setEditFlag] = useState(false);
 
   async function messageDelete() {
     let url = `http://localhost:4000/message/delete/` + _id;
@@ -30,6 +31,7 @@ const MessageSolo = (props) => {
     }
   }
 
+  /* this function only handles sending the changes to the server */
   async function messageEdit() {
     let url = `http://localhost:4000/message/update/` + _id;
     let bodyObject = {
@@ -50,28 +52,29 @@ const MessageSolo = (props) => {
     try {
       const response = await fetch(url, requestOptions);
       const data = await response.json();
-      setBody(
-        <Form className="edit">
-          <FormGroup style={{ display: "inline" }} /* onSubmit={handleEdit} */> //TODO Fix this
-            <Input
-              type="text"
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
-            />
-            <Button type="submit">Edit</Button>
-          </FormGroup>
-        </Form>
-      );
-      console.log("body", body, typeof body);
+      setEditFlag(false);
     } catch (error) {
       console.error(error.message);
     }
   }
 
-  function handleEdit(){
-    console.log(body);
+  function editBox() {
+    /* popup box that can edit message and save on button click */
+    return (
+      <Form className="edit">
+        <FormGroup style={{ display: "inline" }}>
+          <Input
+            type="text"
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+          />
+          <Button type="submit" onClick={messageEdit}>
+            Edit Message
+          </Button>
+        </FormGroup>
+      </Form>
+    );
   }
-
 
   return (
     <>
@@ -83,7 +86,8 @@ const MessageSolo = (props) => {
             className="chatButton"
             color="primary"
             style={{ display: "inline", color: "blue" }}
-            onClick={messageEdit}
+            onClick={() => setEditFlag(true)}
+            disabled={editFlag}
           >
             Edit Message
           </Button>
@@ -92,12 +96,14 @@ const MessageSolo = (props) => {
             color="danger"
             style={{ display: "inline", color: "red" }}
             onClick={messageDelete}
+            disabled={editFlag}
           >
             Delete Message
           </Button>
           Date: {when.slice(0, -8).replace("T", " Time: ")}
         </p>
-        <p style={{ fontSize: "larger" }}>{body}</p>{" "}
+        {!editFlag ? <p style={{ fontSize: "larger" }}>{body}</p> : editBox()}{" "}
+        {/* this calls the function that handles the new input field */}
       </div>
       <div className="my-27">------------------------------</div>
     </>
