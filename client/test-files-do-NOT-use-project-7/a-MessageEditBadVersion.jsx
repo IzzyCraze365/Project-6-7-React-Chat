@@ -41,7 +41,6 @@ const MessageEdit = (props) => {
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", props.token);
-        // The Postman needed more in our headers
 
     const requestOptions = {
       headers: myHeaders,
@@ -52,19 +51,11 @@ const MessageEdit = (props) => {
     try {
       const response = await fetch(url, requestOptions);
       const data = await response.json();
-      setBody(
-        <Form className="edit">
-          <FormGroup style={{ display: "inline" }}>
-            <Input
-              type="text"
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
-            />
-            <Button type="submit">Edit</Button>
-          </FormGroup>
-        </Form>
-      );
-      console.log("body", body, typeof body);
+      console.log(data);
+      console.log("data.message", data.message); //! TEST
+      if (data.message === "Message has been Updated") {
+        navigate("/messages");
+      }
     } catch (error) {
       console.error(error.message);
     }
@@ -98,7 +89,32 @@ const MessageEdit = (props) => {
     <>
       <h3>Hello from MessageEdit inside [Messages] inside [Rooms] </h3>
       <Form className="edit" onSubmit={editMessageChat}>
-  
+        <FormGroup>
+          <Label>When:</Label>
+          <Input
+            type="time"
+            value={when}
+            onChange={(e) => setWhen(e.target.value)}
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <Label>User:</Label>
+          <Input
+            type="text"
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <Label>Room:</Label>
+          <Input
+            type="text"
+            value={room}
+            onChange={(e) => setRoom(e.target.value)}
+          />
+        </FormGroup>
         <FormGroup>
           <Label>Message:</Label>
           <Input
