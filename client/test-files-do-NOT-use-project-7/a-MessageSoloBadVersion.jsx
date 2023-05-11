@@ -1,14 +1,17 @@
 // Project 7: React Chat
 // Team ALJI
 
+//! We had a flag and a ternary to perform the editMessage feature.  We didn't need it, we were overcomplicating our lives
+
 import React, { useState } from "react";
 import { Form, FormGroup, Input, Label, Button } from "reactstrap";
 // import { useNavigate } from "react-router-dom";
 
 const MessageSolo = (props) => {
   //   const navigate = useNavigate();
-  const { when, user, room, _id } = props.chatMessage;
-  const [body, setBody] = useState(props.chatMessage.body);
+  const { when, user, room, body, _id } = props.chatMessage;
+  const [bodyEdit, setBodyEdit] = useState(props.chatMessage.body);
+  const [flag, setFlag] = useState(false);
 
   async function messageDelete() {
     let url = `http://localhost:4000/message/delete/` + _id;
@@ -50,28 +53,30 @@ const MessageSolo = (props) => {
     try {
       const response = await fetch(url, requestOptions);
       const data = await response.json();
-      setBody(
-        <Form className="edit">
-          <FormGroup style={{ display: "inline" }} /* onSubmit={handleEdit} */> //TODO Fix this
+      setFlag(true); // sets flag to make the input field appear
+      data.chatMessage.body = bodyEdit;
+      setBodyEdit(
+        <Form>
+          <FormGroup style={{ display: "inline" }}>
             <Input
               type="text"
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
-            />
-            <Button type="submit">Edit</Button>
+              value={bodyEdit}
+              onChange={(e) => {setBodyEdit(e.target.value); body = bodyEdit}}
+            />{" "}
           </FormGroup>
+          <Button type="submit">
+            Edit
+          </Button>
         </Form>
       );
-      console.log("body", body, typeof body);
+      console.log("body",body, typeof body);
+      console.log("bodyEdit",bodyEdit, typeof bodyEdit);
+      console.log("setBodyEdit",setBodyEdit, typeof setBodyEdit);
+      props.getAllMessages(); // Refreshes page after edit
     } catch (error) {
       console.error(error.message);
     }
   }
-
-  function handleEdit(){
-    console.log(body);
-  }
-
 
   return (
     <>
@@ -97,7 +102,8 @@ const MessageSolo = (props) => {
           </Button>
           Date: {when.slice(0, -8).replace("T", " Time: ")}
         </p>
-        <p style={{ fontSize: "larger" }}>{body}</p>{" "}
+        <p style={{ fontSize: "larger" }}>{!flag ? body : bodyEdit}</p>{" "}
+        {/* This ternary checks the state of the flag (true/false) and displays the appropriate field based on weather the button has been clicked or not */}
       </div>
       <div className="my-27">------------------------------</div>
     </>

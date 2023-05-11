@@ -4,12 +4,11 @@
 import MessageSolo from "./MessageSolo";
 
 const MessageWindow = (props) => {
-  console.log("props window", props, typeof props);
   return (
     <>
-{/*       <h2>Hello from MessageWindow inside [Messages] inside [Rooms] </h2> //! TEST */}
+      {/*       <h2>Hello from MessageWindow inside [Messages] inside [Rooms] </h2> //! TEST */}
       <div>
-       {props.chatMessage.map((chatMessage, index) => (
+        {props.chatMessage.map((chatMessage, index) => (
           <MessageSolo
             key={index}
             chatMessage={chatMessage}
