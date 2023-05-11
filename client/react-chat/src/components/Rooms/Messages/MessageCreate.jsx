@@ -27,7 +27,7 @@ const MessageCreate = (props) => {
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", props.token);
-    // May need something else in our headers
+    // The Postman needed more in our headers
 
     const requestOptions = {
       headers: myHeaders,
@@ -37,9 +37,7 @@ const MessageCreate = (props) => {
 
     try {
       const response = await fetch(url, requestOptions);
-      console.log("response", response); //! TEST
       const data = await response.json();
-      console.log("DATA", data); //! TEST
       props.getAllMessages();
     } catch (error) {
       console.error(error.message);

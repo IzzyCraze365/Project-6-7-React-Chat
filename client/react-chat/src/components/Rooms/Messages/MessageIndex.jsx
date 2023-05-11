@@ -9,9 +9,8 @@ import MessageWindow from "./MessageWindow";
 const MessageIndex = (props) => {
   const [chatMessage, setchatMessage] = useState([]);
 
-
   async function getAllMessages() {
-    let url = `http://localhost:4000/message/display-all/Test`/* + props.room_id */;
+    let url = `http://localhost:4000/message/display-all/Test`; /* + props.room_id */
 
     let myHeaders = new Headers();
     myHeaders.append("Authorization", props.token);
@@ -19,13 +18,12 @@ const MessageIndex = (props) => {
       headers: myHeaders,
       method: "GET",
     };
+    // The Postman needed more in our headers
 
     try {
       const response = await fetch(url, requestOptions);
       const data = await response.json();
-      console.log("DATA",data);
       setchatMessage(data.chatMessage);
-      console.log("data.chatMessage", data.chatMessage);
     } catch (error) {
       console.error(error.message);
     }
@@ -38,7 +36,7 @@ const MessageIndex = (props) => {
   return (
     <>
       <Container className="chatWindow">
-{/*         <h2>Hello from Message Index inside [Messages] inside [Rooms] </h2> //! TEST */}
+        {/*         <h2>Hello from Message Index inside [Messages] inside [Rooms] </h2> //! TEST */}
         <div>
           <MessageWindow
             chatMessage={chatMessage}
