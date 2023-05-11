@@ -66,8 +66,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Auth updateToken={updateToken} />} />
-        <Route path="/react-chat" element={<RoomIndex token={token} userID={userID} firstName={firstName} lastName={lastName} email={email} password={password} isAdmin={isAdmin} />} />
-        <Route path='/update/:id' element={<UserEdit token={token} userID={userID} firstName={firstName} lastName={lastName} email={email} password={password} isAdmin={isAdmin} />} />
+        <Route path="/react-chat" element={<RoomIndex  token={token} userID={userID} firstName={firstName} lastName={lastName} email={email} password={password} isAdmin={isAdmin} />} />
+        <Route path='/update/:id' element={<UserEdit updateToken={updateToken} token={token} userID={userID} firstName={firstName} lastName={lastName} email={email} password={password} isAdmin={isAdmin} />} />
       </Routes>
       <Footer />
     </div>

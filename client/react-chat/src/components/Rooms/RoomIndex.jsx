@@ -2,7 +2,7 @@
 // Team ALJI
 
 import React, { useState, } from 'react';
-import { Button, Col, Container, Row } from "reactstrap";
+import { Button, Col, Container, Input, Row } from "reactstrap";
 import RoomCreate from './RoomCreate';
 import MessageIndex from './Messages/MessageIndex';
 import { useNavigate } from 'react-router-dom';
@@ -37,6 +37,7 @@ const RoomIndex = (props) => {
             console.error(error.message);
         };
     }
+
 
     return ( 
         <>

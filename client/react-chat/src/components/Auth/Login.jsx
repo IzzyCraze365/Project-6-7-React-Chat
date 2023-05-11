@@ -39,13 +39,11 @@ const Login = (props) => {
     try {
       const response = await fetch(url, requestOptions);
       const data = await response.json();
-      console.log(data);
       if (
         data.message === "React Chat User Logged In" ||
         data.message === "Administrator Logged In"
       ) {
         props.updateToken(data.token, data.user._id, data.user.firstName, data.user.lastName, data.user.email, data.user.password, data.user.isAdmin);
-        console.log(data.token);
         navigate("/react-chat"); // Sends you to the Room's page
       }
     } catch (error) {
