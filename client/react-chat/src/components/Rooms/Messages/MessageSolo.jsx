@@ -3,6 +3,7 @@
 
 import React, { useState } from "react";
 import { Form, FormGroup, Input, Label, Button } from "reactstrap";
+//import jwt_decode from "jwt-decode";
 // import { useNavigate } from "react-router-dom";
 
 const MessageSolo = (props) => {
@@ -10,6 +11,7 @@ const MessageSolo = (props) => {
   const { when, user, room, _id } = props.chatMessage;
   const [body, setBody] = useState(props.chatMessage.body);
   const [editFlag, setEditFlag] = useState(false);
+  var decoded = jwt_decode(props.token)
 
   async function messageDelete() {
     let url = `http://localhost:4000/message/delete/` + _id;
