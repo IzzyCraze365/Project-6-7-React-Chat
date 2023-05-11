@@ -6,7 +6,6 @@ import Login from "./Login";
 import { Col, Container, Row } from "reactstrap";
 
 const Auth = (props) => {
-  console.log(props)
   return (
     <>
       <Container>

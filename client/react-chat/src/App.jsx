@@ -97,13 +97,34 @@ function App() {
     localStorage.setItem("body", body);
   }
 
+  function updateUser(
+    firstName,
+    lastName,
+    email,
+    password,
+    isAdmin,
+  ) {
+    setFirstName(firstName);
+    setLastName(lastName);
+    setEmail(email);
+    setPassword(password);
+    setIsAdmin(isAdmin);
+    localStorage.setItem("firstName", firstName);
+    localStorage.setItem("lastName", lastName);
+    localStorage.setItem("email", email);
+    localStorage.setItem("password", password);
+    localStorage.setItem("isAdmin", isAdmin);
+  }
+
+
+
   return (
     <div>
       <Header />
       <Routes>
         <Route path="/" element={<Auth updateToken={updateToken} />} />
         <Route path="/react-chat" element={<RoomIndex  token={token} userID={userID} firstName={firstName} lastName={lastName} email={email} password={password} isAdmin={isAdmin} />} />
-        <Route path='/update/:id' element={<UserEdit updateToken={updateToken} token={token} userID={userID} firstName={firstName} lastName={lastName} email={email} password={password} isAdmin={isAdmin} />} />
+        <Route path='/update/:id' element={<UserEdit updateUser={updateUser} token={token} userID={userID} firstName={firstName} lastName={lastName} email={email} password={password} isAdmin={isAdmin} />} />
 
       </Routes>
       <Footer />
