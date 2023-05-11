@@ -54,8 +54,9 @@ const UserEdit = (props) => {
             const response = await fetch(url, requestOptions);
             const data = await response.json();
             console.log(data);
-            if(data.message === "works from update") {
-                navigate("/react-chat");
+            if(data.message === "user Profile has been updated") {
+              props.updateToken(data.user.firstName, data.user.lastName, data.user.email, data.user.password, data.user.isAdmin)
+              navigate("/react-chat");
             }
         } catch (error) {
             console.error(error.message)
