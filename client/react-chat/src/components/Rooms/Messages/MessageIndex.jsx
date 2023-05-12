@@ -7,8 +7,7 @@ import MessageCreate from "./MessageCreate";
 import MessageWindow from "./MessageWindow";
 
 const MessageIndex = (props) => {
-  // TODO: setChatMessage - capitalized the C - every instance
-  const [chatMessage, setchatMessage] = useState([]);
+  const [chatMessage, setChatMessage] = useState([]);
 
   async function getAllMessages() {
     let url = `http://localhost:4000/message/display-all/Test`; /* + props.room_id */
@@ -24,8 +23,10 @@ const MessageIndex = (props) => {
     try {
       const response = await fetch(url, requestOptions);
       const data = await response.json();
-      // console.log("Get Message Test", data); //! TEST
-      setchatMessage(data.chatMessage);
+
+      console.log("MessageIndex Try DATA", data);
+      setChatMessage(data.chatMessage);
+
     } catch (error) {
       console.error(error.message);
     }

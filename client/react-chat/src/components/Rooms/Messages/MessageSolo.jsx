@@ -13,9 +13,12 @@ const MessageSolo = (props) => {
   const [editFlag, setEditFlag] = useState(false);
   // var decoded = jwt_decode(props.token)
 
+console.log("Solo shot first", _id)
+
+
   async function messageDelete() {
     let url = `http://localhost:4000/message/delete/` + _id;
-
+    console.log("Solo shot second", _id)
     let myHeaders = new Headers();
     myHeaders.append("Authorization", props.token);
 
@@ -28,6 +31,7 @@ const MessageSolo = (props) => {
       const response = await fetch(url, requestOptions);
       const data = await response.json();
       props.getAllMessages(); // refreshes the table after it has been deleted
+      window.location.reload(true);
     } catch (error) {
       console.error(error.message);
     }
