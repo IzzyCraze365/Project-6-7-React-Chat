@@ -1,13 +1,12 @@
 // Project 7: React Chat
 // Team ALJI
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 
 const UserEdit = (props) => {
 
-  console.log("PROPS TEST", props)
 
     const [firstName, setFirstName] = useState(props.firstName);
     const [lastName, setLastName] = useState(props.lastName);
@@ -28,7 +27,6 @@ const UserEdit = (props) => {
 
     async function handleEditUserSubmit(e) {
         e.preventDefault();
-        console.log(id);
 
         let url = `http://localhost:4000/user/update/` + userID;
         
@@ -53,7 +51,6 @@ const UserEdit = (props) => {
         try {
             const response = await fetch(url, requestOptions);
             const data = await response.json();
-            console.log(data);
             if(data.message === "user Profile has been updated") {
               props.updateUser(data.user.firstName, data.user.lastName, data.user.email, data.user.password, data.user.isAdmin)
               navigate("/react-chat");
