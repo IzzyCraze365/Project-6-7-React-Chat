@@ -15,6 +15,8 @@ const RoomIndex = (props) => {
     const navigate = useNavigate();
     const userID = props.userID;
     const [roomID, setRoomID] = useState("");
+    const [roomName, setRoomName] = useState("");
+    const [roomDescription, setRoomDescription] = useState("");
   
 
 
@@ -42,6 +44,14 @@ const RoomIndex = (props) => {
         };
     }
 
+function getRoomInfo(roomValue){
+    setRoomID(roomValue.target.value);
+
+    let chatroomNameFilter = roomArray.filter((room) => roomValue.target.value === room._id)[0]?.name ??"No Room Selected";
+    setRoomName(chatroomNameFilter);
+    let chatroomDescriptionFilter = roomArray.filter((room) => roomValue.target.value === room._id)[0]?.description??"There is No Room, it is just an extension of yourself...";
+    setRoomDescription(chatroomDescriptionFilter);
+}
 
     return ( 
         <>
@@ -61,7 +71,7 @@ const RoomIndex = (props) => {
                                     name="select"
                                     type="select"
                                     onClick={getAllRooms} 
-                                    onChange={(e) => setRoomID(e.target.value)}
+                                    onChange={getRoomInfo}
                                     value={roomID}
                                 >
                                     {/* {console.log("ROOM ID:", roomID)} //! TEST */} 
@@ -86,10 +96,15 @@ const RoomIndex = (props) => {
                     <Table>
                         <thead>
                             <tr>
-                                <th>[Selected Room Name]</th>
+                                <th>{roomName}</th>
                             </tr>
                         </thead>
                         <tbody>
+                        <tr>
+                                <td>
+                                    {roomDescription}
+                                </td>
+                            </tr>
                             <tr>
                                 <td>
                                     [Display Message Window]
