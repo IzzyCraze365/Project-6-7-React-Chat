@@ -8,9 +8,10 @@ import MessageWindow from "./MessageWindow";
 
 const MessageIndex = (props) => {
   const [chatMessage, setChatMessage] = useState([]);
+  let room_id = props.roomID; // This gets the room ID from props for the URL
 
   async function getAllMessages() {
-    let url = `http://localhost:4000/message/display-all/Test`; /* + props.room_id */
+    let url = `http://localhost:4000/message/display-all/`+ room_id;
 
     let myHeaders = new Headers();
     myHeaders.append("Authorization", props.token);
