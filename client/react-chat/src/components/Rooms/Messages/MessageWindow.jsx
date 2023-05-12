@@ -4,7 +4,7 @@
 import MessageSolo from "./MessageSolo";
 
 const MessageWindow = (props) => {
-console.log(props)
+// console.log(props) //! TEST
 
   return (  
     <>

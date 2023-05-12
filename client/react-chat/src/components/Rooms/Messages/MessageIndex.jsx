@@ -24,7 +24,7 @@ const MessageIndex = (props) => {
     try {
       const response = await fetch(url, requestOptions);
       const data = await response.json();
-      console.log("MessageIndex Try DATA", data);
+      // console.log("Get Message Test", data); //! TEST
       setchatMessage(data.chatMessage);
     } catch (error) {
       console.error(error.message);
@@ -32,7 +32,7 @@ const MessageIndex = (props) => {
   }
   useEffect(() => {
     if (props.token) {
-      console.log("TEST 1 - useEffect")
+      // console.log("TEST 1 - useEffect") //! TEST
       getAllMessages();
     }
   }, [props.token]);

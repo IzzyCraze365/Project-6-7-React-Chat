@@ -2,7 +2,7 @@
 // Team ALJI
 
 import React, { useState, } from 'react';
-import { Button, Col, Container, Row, Table } from "reactstrap";
+import { Button, Col, Container, Input, Row, Table } from "reactstrap";
 import RoomCreate from './RoomCreate';
 import MessageIndex from './Messages/MessageIndex';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +14,8 @@ const RoomIndex = (props) => {
     const [roomArray, setRoomArray] = useState([]);
     const navigate = useNavigate();
     const userID = props.userID;
+    const [roomID, setRoomID] = useState("");
+  
 
 
     function userEditClick() {
@@ -33,8 +35,7 @@ const RoomIndex = (props) => {
         try {
             const response = await fetch(url, requestOptions);
             const data = await response.json();
-            console.log(data);
-            setRoomArray(data.log);
+            setRoomArray(data.rooms);
 
         } catch (error) {
             console.error(error.message);
@@ -53,10 +54,27 @@ const RoomIndex = (props) => {
 
                     <div className="d-flex p-5">
                         <form id='select-room-form'>
-                            <h4>Select Chat Room: </h4>
-                            <select name="selectRoom" id="room-select">
-                                <option value="0"></option>
-                            </select>
+                            <label>Select Chat Room: </label>
+                            {/* <select name="rooms" id="room-select"  > */}
+                                <Input
+                                    id="exampleSelect"
+                                    name="select"
+                                    type="select"
+                                    onClick={getAllRooms} 
+                                    onChange={(e) => setRoomID(e.target.value)}
+                                    value={roomID}
+                                >
+                                    {/* {console.log("ROOM ID:", roomID)} //! TEST */} 
+                                    <option value="please-choose">--Please choose an chat room--</option>
+                                    {roomArray.map((room, index) => (
+                                    <option key={index} value={room._id}>
+                                        {room.name}
+                                    </option>
+                                    ))}
+                                </Input>
+                                {/* {roomArray.map((chatRoom, index) => <option value={chatRoom._id} key={index} >{chatRoom.name}</option>)} */}
+
+                            {/* </select> */}
                         </form>
                     </div>
                     <RoomCreate token={props.token} getAllRooms={getAllRooms} roomArray={roomArray} />
@@ -79,7 +97,7 @@ const RoomIndex = (props) => {
                             </tr>
                         </tbody>
                     </Table>
-                    <MessageIndex token={props.token} getAllRooms={getAllRooms} roomArray={roomArray} username={username}/>
+                    <MessageIndex token={props.token} getAllRooms={getAllRooms} roomArray={roomArray} username={username} roomID={roomID}/>
                 </Col>
             </Row>
         </Container>

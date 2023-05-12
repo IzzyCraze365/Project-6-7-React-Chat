@@ -11,7 +11,7 @@ const MessageSolo = (props) => {
   const { when, user, room, _id } = props.chatMessage;
   const [body, setBody] = useState(props.chatMessage.body);
   const [editFlag, setEditFlag] = useState(false);
-  var decoded = jwt_decode(props.token)
+  // var decoded = jwt_decode(props.token)
 
   async function messageDelete() {
     let url = `http://localhost:4000/message/delete/` + _id;
