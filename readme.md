@@ -128,7 +128,7 @@ The view sub-component should consist of an area where users can see all of the 
 
 ## Icebox
 
-- [ ] Server has full CRUD functionality on messages. Basic requirement of this application is to send and retrieve messages. Add a button next to each message which will allow you to select `edit` and `delete` options. This will then send a request to update or delete respective message.
+- [x] Server has full CRUD functionality on messages. Basic requirement of this application is to send and retrieve messages. Add a button next to each message which will allow you to select `edit` and `delete` options. This will then send a request to update or delete respective message.
 
 - [ ] The user should only be allowed to delete their own messages.
 
