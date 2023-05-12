@@ -23,15 +23,17 @@ const MessageIndex = (props) => {
     try {
       const response = await fetch(url, requestOptions);
       const data = await response.json();
+
       console.log("MessageIndex Try DATA", data);
       setChatMessage(data.chatMessage);
+
     } catch (error) {
       console.error(error.message);
     }
   }
   useEffect(() => {
     if (props.token) {
-      console.log("TEST 1 - useEffect")
+      // console.log("TEST 1 - useEffect") //! TEST
       getAllMessages();
     }
   }, [props.token]);

@@ -12,7 +12,9 @@ const MessageSolo = (props) => {
   const [body, setBody] = useState(props.chatMessage.body);
   const [editFlag, setEditFlag] = useState(false);
   // var decoded = jwt_decode(props.token)
+
 console.log("Solo shot first", _id)
+
 
   async function messageDelete() {
     let url = `http://localhost:4000/message/delete/` + _id;

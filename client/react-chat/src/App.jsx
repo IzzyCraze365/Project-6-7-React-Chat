@@ -19,10 +19,11 @@ function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
-  const [when, setWhen] = useState("");
-  const [user, setUser] = useState("");
-  const [room, setRoom] = useState("");
-  const [body, setBody] = useState("");
+  //! No longer need the useStates below since the editMessage route is not being used
+  // const [when, setWhen] = useState(""); 
+  // const [user, setUser] = useState("");
+  // const [room, setRoom] = useState("");
+  // const [body, setBody] = useState("");
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -46,18 +47,19 @@ function App() {
     if (localStorage.getItem("isAdmin")) {
       setIsAdmin(localStorage.getItem("isAdmin"));
     }
-    if (localStorage.getItem("when")) {
-      setWhen(localStorage.getItem("when"));
-    }
-    if (localStorage.getItem("user")) {
-      setUser(localStorage.getItem("user"));
-    }
-    if (localStorage.getItem("room")) {
-      setRoom(localStorage.getItem("room"));
-    }
-    if (localStorage.getItem("body")) {
-      setBody(localStorage.getItem("body"));
-    }
+    //! No longer need the if statements below since the editMessage route is not being used
+    // if (localStorage.getItem("when")) {
+    //   setWhen(localStorage.getItem("when"));
+    // }
+    // if (localStorage.getItem("user")) {
+    //   setUser(localStorage.getItem("user"));
+    // }
+    // if (localStorage.getItem("room")) {
+    //   setRoom(localStorage.getItem("room"));
+    // }
+    // if (localStorage.getItem("body")) {
+    //   setBody(localStorage.getItem("body"));
+    // }
   }, []);
 
   function updateToken(
@@ -80,10 +82,13 @@ function App() {
     setEmail(email);
     setPassword(password);
     setIsAdmin(isAdmin);
-    setWhen(when);
-    setUser(user);
-    setRoom(room);
-    setBody(body);
+
+    //! No longer need the set - UseStates below since the editMessage route is not being used
+    // setWhen(when);
+    // setUser(user);
+    // setRoom(room);
+    // setBody(body);
+
     localStorage.setItem("token", newToken);
     localStorage.setItem("userID", userID);
     localStorage.setItem("firstName", firstName);
@@ -91,10 +96,12 @@ function App() {
     localStorage.setItem("email", email);
     localStorage.setItem("password", password);
     localStorage.setItem("isAdmin", isAdmin);
-    localStorage.setItem("when", when);
-    localStorage.setItem("user", user);
-    localStorage.setItem("room", room);
-    localStorage.setItem("body", body);
+    
+    //! No longer need to set localstorage on the items below since the editMessage route is not being used
+    // localStorage.setItem("when", when);
+    // localStorage.setItem("user", user);
+    // localStorage.setItem("room", room);
+    // localStorage.setItem("body", body);
   }
 
   function updateUser(

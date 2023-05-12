@@ -4,7 +4,9 @@
 import MessageSolo from "./MessageSolo";
 
 const MessageWindow = (props) => {
+
 console.log("Pokey",props.chatMessage); //! TEST
+
 
   return (  
     <>
