@@ -47,7 +47,7 @@ const MessageCreate = (props) => {
     <>
       <h3>Hello from MessageCreate inside [Messages] inside [Rooms] </h3>
       <Form className="create" onSubmit={createMessageChat}>
-{/*         <FormGroup>
+        <FormGroup>
           <Label>User:</Label>
           <Input
             type="text"
@@ -63,7 +63,7 @@ const MessageCreate = (props) => {
             value={room}
             onChange={(e) => setRoom(e.target.value)}
           />
-        </FormGroup> */}
+        </FormGroup>
         <FormGroup>
           <Label>Message:</Label>
           <Input
