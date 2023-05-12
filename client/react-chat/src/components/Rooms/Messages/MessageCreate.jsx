@@ -7,10 +7,10 @@ import { Form, FormGroup, Input, Label, Button } from "reactstrap";
 
 const MessageCreate = (props) => {
 /*   const { when, user, room, _id } = props.chatMessage; */
-  const [user, setUser] = useState(props.userName);
-  const [room, setRoom] = useState(props.room_id);
+  let user = props.username;
+  let room = props.roomID;
   const [body, setBody] = useState("");
-
+  
   // functions
   async function createMessageChat(e) {
     e.preventDefault();
@@ -23,6 +23,7 @@ const MessageCreate = (props) => {
       room: room,
       body: body,
     };
+    console.log("bodyObject",bodyObject); //! TEST
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");

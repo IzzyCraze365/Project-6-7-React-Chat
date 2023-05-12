@@ -7,35 +7,14 @@ import MessageCreate from "./MessageCreate";
 import MessageWindow from "./MessageWindow";
 
 const MessageIndex = (props) => {
-  const [chatMessage, setChatMessage] = useState([]);
-  let room_id = props.roomID; // This gets the room ID from props for the URL
+  const [chatMessage, setChatMessage] = useState(props.chatMessage);
+  let username = props.username; 
+  let roomID = props.roomID; // This gets the room ID from props for the URL
 
-  async function getAllMessages() {
-    let url = `http://localhost:4000/message/display-all/`+ room_id;
-
-    let myHeaders = new Headers();
-    myHeaders.append("Authorization", props.token);
-    const requestOptions = {
-      headers: myHeaders,
-      method: "GET",
-    };
-    // The Postman needed more in our headers
-
-    try {
-      const response = await fetch(url, requestOptions);
-      const data = await response.json();
-
-      console.log("MessageIndex Try DATA", data);
-      setChatMessage(data.chatMessage);
-
-    } catch (error) {
-      console.error(error.message);
-    }
-  }
   useEffect(() => {
     if (props.token) {
       // console.log("TEST 1 - useEffect") //! TEST
-      getAllMessages();
+      props.getAllMessages();
     }
   }, [props.token]);
   return (
@@ -44,11 +23,12 @@ const MessageIndex = (props) => {
         {/*         <h2>Hello from Message Index inside [Messages] inside [Rooms] </h2> //! TEST */}
         <div>
           <MessageWindow
-            chatMessage={chatMessage}
+            chatMessage={props.chatMessage}
             token={props.token}
-            getAllMessages={getAllMessages}
+            getAllMessages={props.getAllMessages}
+            username={username} roomID={roomID}
           />
-          <MessageCreate token={props.token} getAllMessages={getAllMessages} />
+          <MessageCreate token={props.token} getAllMessages={props.getAllMessages} username={username} roomID={roomID}/>
         </div>
       </Container>
     </>
