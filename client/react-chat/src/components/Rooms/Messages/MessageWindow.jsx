@@ -4,7 +4,9 @@
 import MessageSolo from "./MessageSolo";
 
 const MessageWindow = (props) => {
-  return (
+console.log(props)
+
+  return (  
     <>
       {/*       <h2>Hello from MessageWindow inside [Messages] inside [Rooms] </h2> //! TEST */}
       <div>

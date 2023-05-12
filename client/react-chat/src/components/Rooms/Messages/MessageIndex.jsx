@@ -7,6 +7,7 @@ import MessageCreate from "./MessageCreate";
 import MessageWindow from "./MessageWindow";
 
 const MessageIndex = (props) => {
+  // TODO: setChatMessage - capitalized the C - every instance
   const [chatMessage, setchatMessage] = useState([]);
 
   async function getAllMessages() {
@@ -23,6 +24,7 @@ const MessageIndex = (props) => {
     try {
       const response = await fetch(url, requestOptions);
       const data = await response.json();
+      console.log("MessageIndex Try DATA", data);
       setchatMessage(data.chatMessage);
     } catch (error) {
       console.error(error.message);
@@ -30,6 +32,7 @@ const MessageIndex = (props) => {
   }
   useEffect(() => {
     if (props.token) {
+      console.log("TEST 1 - useEffect")
       getAllMessages();
     }
   }, [props.token]);
