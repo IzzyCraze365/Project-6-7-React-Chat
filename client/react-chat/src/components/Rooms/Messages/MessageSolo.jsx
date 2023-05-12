@@ -11,6 +11,8 @@ const MessageSolo = (props) => {
   const { when, user, room, _id } = props.chatMessage;
   const [body, setBody] = useState(props.chatMessage.body);
   const [editFlag, setEditFlag] = useState(false);
+  let username = props.username; 
+  let roomID = props.roomID;
   // var decoded = jwt_decode(props.token)
 
 console.log("Solo shot first", _id)
@@ -31,7 +33,7 @@ console.log("Solo shot first", _id)
       const response = await fetch(url, requestOptions);
       const data = await response.json();
       props.getAllMessages(); // refreshes the table after it has been deleted
-      window.location.reload(true);
+      window.location.reload(true); // TODO Find alternative to this page refresh
     } catch (error) {
       console.error(error.message);
     }

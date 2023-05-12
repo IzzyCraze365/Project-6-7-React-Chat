@@ -4,6 +4,8 @@
 import MessageSolo from "./MessageSolo";
 
 const MessageWindow = (props) => {
+  let username = props.username; 
+  let roomID = props.roomID;
 
 console.log("Pokey",props.chatMessage); //! TEST
 
@@ -18,6 +20,7 @@ console.log("Pokey",props.chatMessage); //! TEST
             chatMessage={chatMessage}
             token={props.token}
             getAllMessages={props.getAllMessages}
+            username={username} roomID={roomID}
           />
         ))}
       </div>

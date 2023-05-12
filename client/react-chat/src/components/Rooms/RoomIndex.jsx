@@ -12,6 +12,7 @@ const RoomIndex = (props) => {
     let lastInitial = props.lastName.charAt(0).toUpperCase();
     let username = props.firstName + lastInitial;
     const [roomArray, setRoomArray] = useState([]);
+    const [chatMessage, setChatMessage] = useState([]);
     const navigate = useNavigate();
     const userID = props.userID;
     const [roomID, setRoomID] = useState("");
@@ -46,12 +47,32 @@ const RoomIndex = (props) => {
 
 function getRoomInfo(roomValue){
     setRoomID(roomValue.target.value);
-
     let chatroomNameFilter = roomArray.filter((room) => roomValue.target.value === room._id)[0]?.name ??"No Room Selected";
     setRoomName(chatroomNameFilter);
     let chatroomDescriptionFilter = roomArray.filter((room) => roomValue.target.value === room._id)[0]?.description??"There is No Room, it is just an extension of yourself...";
     setRoomDescription(chatroomDescriptionFilter);
+    getAllMessages(roomID);
 }
+
+async function getAllMessages(roomID) {
+    let url = `http://localhost:4000/message/display-all/`+ roomID;
+    let myHeaders = new Headers();
+    myHeaders.append("Authorization", props.token);
+    const requestOptions = {
+      headers: myHeaders,
+      method: "GET",
+    };
+    // The Postman needed more in our headers
+
+    try {
+      const response = await fetch(url, requestOptions);
+      const data = await response.json();
+      setChatMessage(data.chatMessage);
+
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
 
     return ( 
         <>
@@ -112,7 +133,7 @@ function getRoomInfo(roomValue){
                             </tr>
                         </tbody>
                     </Table>
-                    <MessageIndex token={props.token} getAllRooms={getAllRooms} roomArray={roomArray} username={username} roomID={roomID}/>
+                    <MessageIndex token={props.token} getAllRooms={getAllRooms} getAllMessages={getAllMessages} chatMessage={chatMessage} roomArray={roomArray} username={username} roomID={roomID}/>
                 </Col>
             </Row>
         </Container>
