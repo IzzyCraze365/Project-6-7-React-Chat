@@ -1,7 +1,8 @@
 // Project 7: React Chat
 // Team ALJI
 
-import "./App.css";
+import "./App.css"
+import "./components/style.css";
 import React, { useEffect, useState } from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -126,9 +127,9 @@ function App() {
 
 
   return (
-    <div>
+    <div className="App">
       <Header />
-        <Routes>
+        <Routes className="body">
           
           <Route path="/" element={<Auth updateToken={updateToken} />} />
 
@@ -137,6 +138,7 @@ function App() {
           <Route path='/update/:id' element={<UserEdit updateUser={updateUser} token={token} userID={userID} firstName={firstName} lastName={lastName} email={email} password={password} isAdmin={isAdmin} />} />
 
         </Routes>
+        
       <Footer />
     </div>
   );
