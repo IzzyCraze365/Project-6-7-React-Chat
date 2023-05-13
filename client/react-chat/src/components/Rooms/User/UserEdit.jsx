@@ -115,7 +115,7 @@ const UserEdit = (props) => {
             />
           </FormGroup>
           {/* ISADMIN END */}
-          <div className="d-grid gap-2 mb-4">
+          <div >
             {" "}
             {/* D-Grid, Gap of 2, Margin Bottom of 4 */}
             <Button onClick={handleEditUserSubmit} type="submit" color="danger">

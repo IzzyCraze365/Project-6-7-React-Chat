@@ -44,27 +44,28 @@ const RoomCreate = (props) => {
     }
 
     return ( 
-        <>
-        <h3>Create a Chat Room</h3>
+        <div id='create-room-box'>
+        <h4 id='create-room-header'>Create a Chat Room</h4>
         <Form onSubmit={handleSubmit}>
             <FormGroup>
-                <Label>Room Name: </Label>
-                <Input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                <Label id='creat-room-label'>Room Name: </Label>
+                <Input type="text" id='create-room-input' value={name} onChange={(e) => setName(e.target.value)} />
             </FormGroup>
             <FormGroup>
-                <Label>Room Description: </Label>
-                <Input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+                <Label id='creat-room-label'>Room Description: </Label>
+                <Input type="text" id='create-room-input' value={description} onChange={(e) => setDescription(e.target.value)} />
             </FormGroup>
-            <FormGroup>
+            {/* //! Do not need to list the added Users when creating a room*/}
+            {/* <FormGroup>
                 <Label>Room Users: </Label>
-                <Input type="array" value={addedUsers} onChange={(e) => setAddedUsers(e.target.value)} />
-            </FormGroup>
-            <div className='d-grid gap-2 mb-4'>
-                <Button type='submit' color='success'>Create Room
+                <Input type="array" id='create-room-input' value={addedUsers} onChange={(e) => setAddedUsers(e.target.value)} />
+            </FormGroup> */}
+            <div id='create-room-btn'>
+                <Button type='submit'>Create Room
                 </Button>
             </div>
         </Form>
-        </>
+        </div>
      );
 }
  

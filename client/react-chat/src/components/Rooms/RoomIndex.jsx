@@ -75,20 +75,22 @@ async function getAllMessages(roomID) {
   }
 
     return ( 
-        <>
-        <Container>
-            <Row>
-                <Col md="4" >
+        <div className='container' style={{paddingLeft: 0, paddingRight: 0}}>
+        <Container className='container' style={{paddingLeft: 0, paddingRight: 0}}>
+            <Row className='container' style={{paddingLeft: 0, paddingRight: 0}}>
+                <Col lg="4" className='container' style={{paddingLeft: 0, paddingRight: 0}}>
                     {/* Username based on first name and last initial */}
-                    <h3>Username: {username}</h3>
+                    <h3 id='username'>Username: {username}</h3>
                     {/* Room Drop Down */}
-
-                    <div className="d-flex p-5">
+                    <div id='edit-user-btn'>
+                        <Button type='submit' style={{width: "50%"}} onClick={userEditClick} >Edit User</Button>
+                    </div>
+                    <div >
                         <form id='select-room-form'>
-                            <label>Select Chat Room: </label>
+                            <label id='room-select-label'>Select Chat Room: </label>
                             {/* <select name="rooms" id="room-select"  > */}
                                 <Input
-                                    id="exampleSelect"
+                                    id="room-select-list"
                                     name="select"
                                     type="select"
                                     onClick={getAllRooms} 
@@ -96,7 +98,7 @@ async function getAllMessages(roomID) {
                                     value={roomID}
                                 >
                                     {/* {console.log("ROOM ID:", roomID)} //! TEST */} 
-                                    <option value="please-choose">--Please choose an chat room--</option>
+                                    <option id="please-choose">--Please choose a chat room--</option>
                                     {roomArray.map((room, index) => (
                                     <option key={index} value={room._id}>
                                         {room.name}
@@ -109,20 +111,18 @@ async function getAllMessages(roomID) {
                         </form>
                     </div>
                     <RoomCreate token={props.token} getAllRooms={getAllRooms} roomArray={roomArray} />
-                    <div>
-                        <Button type='submit' onClick={userEditClick} >Edit User</Button>
-                    </div>
+
                 </Col>
-                <Col md="8">
+                <Col lg="8">
                     <Table>
                         <thead>
                             <tr>
-                                <th>{roomName}</th>
+                                <th style={{textAlign: "center", fontSize: "x-large"}}>{roomName}</th>
                             </tr>
                         </thead>
                         <tbody>
                         <tr>
-                                <td>
+                                <td style={{textAlign: "center", fontSize: "large"}}>
                                     {roomDescription}
                                 </td>
                             </tr>
@@ -137,7 +137,7 @@ async function getAllMessages(roomID) {
                 </Col>
             </Row>
         </Container>
-        </>
+        </div>
      );
 }
  

@@ -52,11 +52,11 @@ const Signup = (props) => {
   return (
     <>
       {/*       <h2>Hello from "Signup" inside [Auth] inside [components]</h2> */}
-      <center>
-        <h2 className="text-center">Signup</h2> {/* Title */}
-        <Form onSubmit={userSignIn}>
+      <div className="form-container">
+        <h2 className="text-center">SIGNUP</h2> {/* Title */}
+        <Form onSubmit={userSignIn} >
           {/* FIRST NAME START */}
-          <FormGroup>
+          <FormGroup className="form-group">
             <Label>First Name:</Label>
             <Input /* this is where the input is pulled */
               value={firstName}
@@ -65,7 +65,7 @@ const Signup = (props) => {
           </FormGroup>
           {/* FIRST NAME END */}
           {/* LAST NAME START */}
-          <FormGroup>
+          <FormGroup className="form-group">
             <Label>Last Name:</Label>
             <Input /* this is where the input is pulled */
               value={lastName}
@@ -74,29 +74,29 @@ const Signup = (props) => {
           </FormGroup>
           {/* LAST NAME END */}
           {/* EMAIL START */}
-          <FormGroup>
+          <FormGroup className="form-group">
             <Label>Email:</Label>
             <Input /* this is where the input is pulled */
               value={email} /* Standard HTML but applied in React */
-              type="email"
+              // type="email"
               required
               onChange={(e) => setEmail(e.target.value)}
             />
           </FormGroup>
           {/* EMAIL END */}
           {/* PASSWORD START */}
-          <FormGroup>
+          <FormGroup className="form-group">
             <Label>Password:</Label>
             <Input /* this is where the input is pulled */
               value={password}
-              type="password"
+              // type="password"
               required
               onChange={(e) => setPassword(e.target.value)}
             />
           </FormGroup>
           {/* PASSWORD END */}
           {/* ISADMIN START */}
-          <FormGroup>
+          <FormGroup className="form-group">
             <Label>Admin?:</Label> {/* //TODO Hide this */}
             <Input /* this is where the input is pulled */
               value={isAdmin}
@@ -104,15 +104,15 @@ const Signup = (props) => {
             />
           </FormGroup>
           {/* ISADMIN END */}
-          <div className="d-grid gap-2 mb-4">
+          <center>
             {" "}
             {/* D-Grid, Gap of 2, Margin Bottom of 4 */}
-            <Button type="submit" color="danger">
+            <Button className="bigBtn" type="submit" color="danger">
               Sign Up
             </Button>
-          </div>
+          </center>
         </Form>
-      </center>
+      </div>
     </>
   );
 };

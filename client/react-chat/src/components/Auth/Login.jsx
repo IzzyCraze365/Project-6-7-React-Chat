@@ -55,10 +55,10 @@ const Login = (props) => {
     <>
       <center>
         {/* <h2>Hello from "Login" inside [Auth] inside [components]</h2> //! TEST */}
-        <h2>Log In</h2> {/* Title */}
+        <h2>LOG IN</h2> {/* Title */}
         <Form onSubmit={userLogIn}>
           {/* EMAIL START */}
-          <FormGroup>
+          <FormGroup className="form-group">
             <Label>Email:</Label>
             <Input /* this is where the input value is pulled from */
               value={email}
@@ -67,7 +67,7 @@ const Login = (props) => {
           </FormGroup>
           {/* EMAIL END */}
           {/* PASSWORD START */}
-          <FormGroup>
+          <FormGroup className="form-group">
             <Label>Password:</Label>
             <Input /* this is where the input is pulled */
               value={password}
@@ -78,7 +78,7 @@ const Login = (props) => {
           <div className="d-grid gap-2 mb-4">
             {" "}
             {/* D-Grid, Gap of 2, Margin Bottom of 4 */}
-            <Button type="submit" color="primary">
+            <Button className="bigBtn" type="submit" color="primary">
               Log In
             </Button>
           </div>
