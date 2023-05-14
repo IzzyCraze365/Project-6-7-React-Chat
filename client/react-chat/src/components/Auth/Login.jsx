@@ -8,8 +8,8 @@ import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 // email & password
 const Login = (props) => {
   // UseState variables
-  const [email, setEmail] = useState("NewGuy@NewGuy.com"); //TODO Remove NewGuy
-  const [password, setPassword] = useState("NewGuy"); //TODO Remove NewGuy
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   // BrowserRouter Hook
   const navigate = useNavigate();
 
@@ -43,7 +43,15 @@ const Login = (props) => {
         data.message === "React Chat User Logged In" ||
         data.message === "Administrator Logged In"
       ) {
-        props.updateToken(data.token, data.user._id, data.user.firstName, data.user.lastName, data.user.email, data.user.password, data.user.isAdmin);
+        props.updateToken(
+          data.token,
+          data.user._id,
+          data.user.firstName,
+          data.user.lastName,
+          data.user.email,
+          data.user.password,
+          data.user.isAdmin
+        );
         navigate("/react-chat"); // Sends you to the Room's page
       }
     } catch (error) {

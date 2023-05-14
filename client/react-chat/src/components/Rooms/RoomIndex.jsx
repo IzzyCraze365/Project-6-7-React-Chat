@@ -51,7 +51,8 @@ const RoomIndex = (props) => {
         ?.description ??
       "There is No Room, it is just an extension of yourself...";
     setRoomDescription(chatroomDescriptionFilter);
-    getAllMessages(roomID);
+    getAllMessages(roomValue.target.value);
+    console.log("TESTINg ROOM", roomValue.target.value);
   }
 
   async function getAllMessages(roomID) {
@@ -68,6 +69,7 @@ const RoomIndex = (props) => {
       const response = await fetch(url, requestOptions);
       const data = await response.json();
       setChatMessage(data.chatMessage);
+      console.log("ChatMessages", data.chatMessage); //! TEST
     } catch (error) {
       console.error(error.message);
     }
