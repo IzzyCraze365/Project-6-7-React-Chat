@@ -67,7 +67,7 @@ const UserEdit = (props) => {
         <h2 className="text-center">Update User Information</h2> {/* Title */}
         <Form onSubmit={handleEditUserSubmit}>
           {/* FIRST NAME START */}
-          <FormGroup>
+          <FormGroup className="form-group">
             <Label>First Name:</Label>
             <Input /* this is where the input is pulled */
               value={firstName}
@@ -76,7 +76,7 @@ const UserEdit = (props) => {
           </FormGroup>
           {/* FIRST NAME END */}
           {/* LAST NAME START */}
-          <FormGroup>
+          <FormGroup className="form-group">
             <Label>Last Name:</Label>
             <Input /* this is where the input is pulled */
               value={lastName}
@@ -85,7 +85,7 @@ const UserEdit = (props) => {
           </FormGroup>
           {/* LAST NAME END */}
           {/* EMAIL START */}
-          <FormGroup>
+          <FormGroup className="form-group">
             <Label>Email:</Label>
             <Input /* this is where the input is pulled */
               value={email} /* Standard HTML but applied in React */
@@ -96,7 +96,7 @@ const UserEdit = (props) => {
           </FormGroup>
           {/* EMAIL END */}
           {/* PASSWORD START */}
-          <FormGroup>
+          <FormGroup className="form-group">
             <Label>Password:</Label>
             <Input /* this is where the input is pulled */
               value={password}
@@ -107,7 +107,7 @@ const UserEdit = (props) => {
           </FormGroup>
           {/* PASSWORD END */}
           {/* ISADMIN START */}
-          <FormGroup>
+          <FormGroup className="form-group">
             <Label>Admin?:</Label> {/* //TODO Hide this */}
             <Input /* this is where the input is pulled */
               value={isAdmin}
@@ -118,7 +118,7 @@ const UserEdit = (props) => {
           <div >
             {" "}
             {/* D-Grid, Gap of 2, Margin Bottom of 4 */}
-            <Button onClick={handleEditUserSubmit} type="submit" color="danger">
+            <Button onClick={handleEditUserSubmit} className='editBtn' type="submit" color="danger">
               Update User
             </Button>
           </div>
