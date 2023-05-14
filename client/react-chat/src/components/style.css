@@ -1,11 +1,17 @@
 :root{
-    --primary: rgb(8, 245, 87);
+    --primary: rgb(68, 211, 255);
     --secondary: rgba(173, 173, 173, 0.774);
-    --tertiary: rgb(68, 211, 255);
+    --tertiary: rgb(197, 209, 212);
     --quadriary: rgb(71, 70, 70);
     background-color: var(--tertiary);
 }
 
+.App{
+    background-color: var(--tertiary);
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+}
 
 .header{
     background-color: var(--primary);

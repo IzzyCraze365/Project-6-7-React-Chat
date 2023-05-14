@@ -1,7 +1,7 @@
 // Project 7: React Chat
 // Team ALJI
 
-import "./App.css"
+// import "./App.css"
 import "./components/style.css";
 import React, { useEffect, useState } from "react";
 import Footer from "./components/Footer";
