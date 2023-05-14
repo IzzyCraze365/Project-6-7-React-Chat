@@ -8,7 +8,7 @@ import MessageWindow from "./MessageWindow";
 
 const MessageIndex = (props) => {
   const [chatMessage, setChatMessage] = useState(props.chatMessage);
-  let username = props.username; 
+  let username = props.username;
   let roomID = props.roomID; // This gets the room ID from props for the URL
 
   useEffect(() => {
@@ -19,16 +19,24 @@ const MessageIndex = (props) => {
   }, [props.token]);
   return (
     <>
-      <Container className="chatWindow">
+      <Container>
         {/*         <h2>Hello from Message Index inside [Messages] inside [Rooms] </h2> //! TEST */}
-        <div>
+        <div className="chatWindow">
           <MessageWindow
             chatMessage={props.chatMessage}
             token={props.token}
             getAllMessages={props.getAllMessages}
-            username={username} roomID={roomID}
+            username={username}
+            roomID={roomID}
           />
-          <MessageCreate token={props.token} getAllMessages={props.getAllMessages} username={username} roomID={roomID}/>
+        </div>
+        <div className="createBox">
+          <MessageCreate
+            token={props.token}
+            getAllMessages={props.getAllMessages}
+            username={username}
+            roomID={roomID}
+          />
         </div>
       </Container>
     </>
