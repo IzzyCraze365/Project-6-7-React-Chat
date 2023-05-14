@@ -4,13 +4,12 @@
 import MessageSolo from "./MessageSolo";
 
 const MessageWindow = (props) => {
-  let username = props.username; 
+  let username = props.username;
   let roomID = props.roomID;
 
-console.log("Pokey",props.chatMessage); //! TEST
+  /* console.log("Pokey",props.chatMessage); //! TEST */
 
-
-  return (  
+  return (
     <>
       {/*       <h2>Hello from MessageWindow inside [Messages] inside [Rooms] </h2> //! TEST */}
       <div>
@@ -20,7 +19,8 @@ console.log("Pokey",props.chatMessage); //! TEST
             chatMessage={chatMessage}
             token={props.token}
             getAllMessages={props.getAllMessages}
-            username={username} roomID={roomID}
+            username={username}
+            roomID={roomID}
           />
         ))}
       </div>

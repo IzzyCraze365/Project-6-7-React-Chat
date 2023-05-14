@@ -6,11 +6,11 @@ import { Form, FormGroup, Input, Label, Button } from "reactstrap";
 // To create boiler place use "sfc + [tab]"
 
 const MessageCreate = (props) => {
-/*   const { when, user, room, _id } = props.chatMessage; */
+  /*   const { when, user, room, _id } = props.chatMessage; */
   let user = props.username;
   let room = props.roomID;
   const [body, setBody] = useState("");
-  
+
   // functions
   async function createMessageChat(e) {
     e.preventDefault();
@@ -23,7 +23,7 @@ const MessageCreate = (props) => {
       room: room,
       body: body,
     };
-    console.log("bodyObject",bodyObject); //! TEST
+    console.log("bodyObject", bodyObject); //! TEST
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -39,7 +39,8 @@ const MessageCreate = (props) => {
     try {
       const response = await fetch(url, requestOptions);
       const data = await response.json();
-      props.getAllMessages();
+      props.getAllMessages(); //TODO This is our problem line to refresh the page
+      setBody(""); // Clears input field after submission
     } catch (error) {
       console.error(error.message);
     }
@@ -48,7 +49,7 @@ const MessageCreate = (props) => {
     <>
       {/* <h3>Hello from MessageCreate inside [Messages] inside [Rooms] </h3> //! TEST*/}
       <Form className="create" onSubmit={createMessageChat}>
-{/*         <FormGroup>
+        {/*         <FormGroup>
           <Label>User:</Label>
           <Input
             type="text"

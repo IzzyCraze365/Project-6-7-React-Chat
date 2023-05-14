@@ -15,11 +15,11 @@ const MessageSolo = (props) => {
   let roomID = props.roomID;
   // var decoded = jwt_decode(props.token)
 
-  console.log("Solo shot first", _id);
+  /* console.log("Solo shot first", _id); //! TEST */
 
   async function messageDelete() {
     let url = `http://localhost:4000/message/delete/` + _id;
-    console.log("Solo shot second", _id);
+    /* console.log("Solo shot second", _id); //! TEST */
     let myHeaders = new Headers();
     myHeaders.append("Authorization", props.token);
 
@@ -109,7 +109,11 @@ const MessageSolo = (props) => {
             Delete
           </Button>
         </p>
-        {!editFlag ? <p style={{ fontSize: "larger" }}>{body}</p> : editBox()}{" "}
+        {!editFlag ? (
+          <p style={{ fontSize: "larger" }}>{props.chatMessage.body}</p>
+        ) : (
+          editBox()
+        )}{" "}
         {/* this calls the function that handles the new input field */}
       </div>
       <div className="my-27">------------------------------</div>

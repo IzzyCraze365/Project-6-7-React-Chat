@@ -7,11 +7,11 @@ import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 
 // firstName & lastName & email & password & isAdmin
 const Signup = (props) => {
-  const [firstName, setFirstName] = useState("New"); //TODO Remove NewGuy
-  const [lastName, setLastName] = useState("Guy"); //TODO Remove NewGuy
-  const [email, setEmail] = useState("NewGuy@NewGuy.com"); //TODO Remove NewGuy
-  const [password, setPassword] = useState("NewGuy"); //TODO Remove NewGuy
-  const [isAdmin, setIsAdmin] = useState(false); //TODO Remove NewGuy
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
 
   // Functions
@@ -41,7 +41,15 @@ const Signup = (props) => {
     try {
       const response = await fetch(url, requestOptions);
       const data = await response.json();
-      props.updateToken(data.token, data.user._id, data.user.firstName, data.user.lastName, data.user.email, data.user.password, data.user.isAdmin);
+      props.updateToken(
+        data.token,
+        data.user._id,
+        data.user.firstName,
+        data.user.lastName,
+        data.user.email,
+        data.user.password,
+        data.user.isAdmin
+      );
       console.log(data.token);
       navigate("/react-chat"); // Sends you to the Room's page
     } catch (error) {
@@ -54,7 +62,7 @@ const Signup = (props) => {
       {/*       <h2>Hello from "Signup" inside [Auth] inside [components]</h2> */}
       <div className="form-container">
         <h2 className="text-center">SIGNUP</h2> {/* Title */}
-        <Form onSubmit={userSignIn} >
+        <Form onSubmit={userSignIn}>
           {/* FIRST NAME START */}
           <FormGroup className="form-group">
             <Label>First Name:</Label>
