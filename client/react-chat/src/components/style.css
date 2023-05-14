@@ -125,7 +125,7 @@ label {
   margin-right: 20px;
 }
 
-input[type="text"],
+input[type="text"], input[type="email"], input[type="password"], 
 select {
   display: inline-block;
   justify-content: right;
@@ -134,6 +134,7 @@ select {
   margin-bottom: 10px;
   box-sizing: border-box;
 }
+
 
 input[type="submit"] {
   background-color: var(--secondary);
@@ -196,6 +197,10 @@ input[type="submit"]:hover {
 
 #edit-user-btn {
   margin-left: 30%;
+}
+
+.editBtn{
+    margin: 30px 45%;
 }
 
 button {
