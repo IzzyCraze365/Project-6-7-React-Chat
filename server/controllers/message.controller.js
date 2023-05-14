@@ -11,7 +11,6 @@ router.post("/create", validateSession, async (req, res) => {
   try {
     const { when, user, room, body } = req.body; // paramters that need to be added when creating a Message
     const chatMessage = new Messages({
-      when: when,
       user: user,
       room: room,
       body: body,
