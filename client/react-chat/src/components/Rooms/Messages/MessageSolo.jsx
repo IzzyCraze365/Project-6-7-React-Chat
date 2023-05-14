@@ -11,16 +11,15 @@ const MessageSolo = (props) => {
   const { when, user, room, _id } = props.chatMessage;
   const [body, setBody] = useState(props.chatMessage.body);
   const [editFlag, setEditFlag] = useState(false);
-  let username = props.username; 
+  let username = props.username;
   let roomID = props.roomID;
   // var decoded = jwt_decode(props.token)
 
-console.log("Solo shot first", _id)
-
+  console.log("Solo shot first", _id);
 
   async function messageDelete() {
     let url = `http://localhost:4000/message/delete/` + _id;
-    console.log("Solo shot second", _id)
+    console.log("Solo shot second", _id);
     let myHeaders = new Headers();
     myHeaders.append("Authorization", props.token);
 
@@ -89,26 +88,26 @@ console.log("Solo shot first", _id)
       {/* <h2>Hello from MessageSolo inside [Messages] inside [Rooms] </h2> //! TEST */}
       <div style={{ display: "inline" }}>
         <p style={{ fontSize: "large" }}>
-          {user}.....
+          {user}..... Date: {when.slice(0, -8).replace("T", " Time: ")}
+          ..........
           <Button
             className="chatButton"
             color="primary"
-            style={{ display: "inline", color: "blue" }}
+            style={{ display: "inline", color: "black" }}
             onClick={() => setEditFlag(true)}
             disabled={editFlag}
           >
-            Edit Message
+            Edit
           </Button>
           <Button
             className="chatButton"
             color="danger"
-            style={{ display: "inline", color: "red" }}
+            style={{ display: "inline", color: "black" }}
             onClick={messageDelete}
             disabled={editFlag}
           >
-            Delete Message
+            Delete
           </Button>
-          Date: {when.slice(0, -8).replace("T", " Time: ")}
         </p>
         {!editFlag ? <p style={{ fontSize: "larger" }}>{body}</p> : editBox()}{" "}
         {/* this calls the function that handles the new input field */}

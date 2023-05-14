@@ -1,180 +1,211 @@
-:root{
-    --primary: rgb(68, 211, 255);
-    --secondary: rgba(173, 173, 173, 0.774);
-    --tertiary: rgb(197, 209, 212);
-    --quadriary: rgb(71, 70, 70);
-    background-color: var(--tertiary);
+:root {
+  --primary: rgb(68, 211, 255);
+  --secondary: rgba(173, 173, 173, 0.774);
+  --tertiary: rgb(197, 209, 212);
+  --quadriary: rgb(71, 70, 70);
+  --borders: black;
+  --chatWindow: lightgreen;
+  background-color: var(--tertiary);
 }
 
-.App{
-    background-color: var(--tertiary);
-    height: 100%;
-    text-align: center;
-    justify-content: center;
+.App {
+  background-color: var(--tertiary);
+  height: 100%;
+  text-align: center;
+  justify-content: center;
 }
 
-.header{
-    background-color: var(--primary);
-    color: var(--quadriary);
-    text-align: center;
-    justify-content: center;
-    font-size: 2rem;
-    padding: 20px;
-    text-shadow: 2px 2px var(--brown);
+.body {
+  text-align: center;
+  justify-content: center;
+  font-size: 2rem;
+  padding: 20px;
+  text-shadow: 2px 2px var(--brown);
 }
 
-
-.footer{
-    position: fixed;
-    width: 100%;
-    bottom: 0%;
-    left: 0%;
-    right: 0%;
-    text-align: center;
-    background-color: var(--primary);
-    padding: 2px;
-    margin-top: 10px;
-    
+.header {
+  background-color: var(--primary);
+  color: var(--quadriary);
+  text-align: center;
+  justify-content: center;
+  font-size: 2rem;
+  padding: 20px;
+  text-shadow: 2px 2px var(--brown);
 }
 
-.container{
-    width: 100%;
-    background-color: var(--tertiary);
+.footer {
+  position: sticky;
+  width: 100%;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
+  text-align: center;
+  background-color: var(--primary);
+  padding: 2px;
+  margin-top: 10px;
+}
+
+.container {
+  width: 100%;
+  background-color: var(--tertiary);
+}
+
+.windowBox {
+  border: solid 5px var(--borders);
+  padding: 10px;
+  margin-top: 6%;
+  background-color: var(--chatWindow);
+}
+
+.chatWindow {
+  overflow-y: scroll;
+  height: 350px;
+}
+
+.createBox {
+  border: solid 2px var(--borders);
+  padding: 10px;
+  margin-top: 30px;
 }
 
 .column {
-    display: flex;
-    align-items: flex-start;
-    margin: 0 10px;
+  display: flex;
+  align-items: flex-start;
+  margin: 0 10px;
 }
 
-table{
-    border-collapse: collapse;
-    width: 100%;
-    max-width:  800px;
-    margin: auto;
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
 }
 
-.btn{
-    display: flex;
-    justify-content: center;
+.btn {
+  display: flex;
+  justify-content: center;
 }
 
-th, td{
-    text-align: left;
-    padding: 8px;
+th,
+td {
+  text-align: left;
+  padding: 8px;
 }
 
-th{
-    background-color: var(--brown);
-    color: white;
+th {
+  background-color: var(--brown);
+  color: white;
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
-tr:hover {
+/* tr:hover {
     background-color: #ddd;
-}
+} */
 
 /* .form-container{
 
 } */
 
- .form-group{
-    height: 20px;
-    width: 60%;
-    margin-left: 10%;
-    margin-right: 25%;
-    margin-bottom: 10px;
-    padding: 20px;
-    text-align: right;
-    font-size: 1.25rem;
+.form-group {
+  height: 20px;
+  width: 60%;
+  margin-left: 10%;
+  margin-right: 25%;
+  margin-bottom: 10px;
+  padding: 20px;
+  text-align: right;
+  font-size: 1.25rem;
 }
 
-label{
-    display: inline-block;
-    margin-right: 20px;
+label {
+  display: inline-block;
+  margin-right: 20px;
 }
 
-input[type="text"], select {
-    display:inline-block;
-    justify-content: right;
-    width: 70%;
-    padding: 10px 20px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-}  
+input[type="text"],
+select {
+  display: inline-block;
+  justify-content: right;
+  width: 70%;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
 
 input[type="submit"] {
-    background-color: var(--secondary);
-    padding: 12px 20px;
-    width: 100%;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    font-size: 16px;
-    box-sizing: border-box;
+  background-color: var(--secondary);
+  padding: 12px 20px;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  box-sizing: border-box;
 }
 
 input[type="submit"]:hover {
-    background-color: var(--brown);
-}   
-
-#create-room-box{
-    border: solid 1px;
-    padding: 5px;
-    margin: 20px 0px 20px 15px;
-    width: 88%;
-    text-align: center;
+  background-color: var(--brown);
 }
 
-#room-select-list{
-    display: flex;
-    width: 88%;
-    margin-left: 15px;
+#create-room-box {
+  border: solid 1px;
+  padding: 5px;
+  margin: 20px 0px 20px 15px;
+  width: 88%;
+  text-align: center;
 }
 
-.bigBtn{
-    padding: 5px 15px;
-    font-size: 1.25rem;
+#room-select-list {
+  display: flex;
+  width: 88%;
+  margin-left: 15px;
 }
 
-#username, #create-room-header{
-    margin-top: 20px;
-    margin-left: 10%;
-    text-align: left;
+.bigBtn {
+  padding: 5px 15px;
+  font-size: 1.25rem;
+  margin-top: 30px;
 }
 
-#room-select-label{
-    margin-top: 20px;
+#username,
+#create-room-header {
+  margin-top: 20px;
+  margin-left: 10%;
+  text-align: left;
 }
 
-#create-room-input, #creat-room-label{
-    margin-bottom: 0px;
-    margin-right: 25px;
-    margin-left: 10%;
-    width: 80%;
+#room-select-label {
+  margin-top: 20px;
 }
 
-#create-room-btn{
-    margin-left: 28%;
-    margin-bottom: 20px;
+#create-room-input,
+#creat-room-label {
+  margin-bottom: 0px;
+  margin-right: 25px;
+  margin-left: 10%;
+  width: 80%;
 }
 
-#edit-user-btn{
-    margin-left: 30%;
+#create-room-btn {
+  margin-left: 28%;
+  margin-bottom: 20px;
 }
 
-button{
-    border: solid 2px;
+#edit-user-btn {
+  margin-left: 30%;
 }
 
-center{
-    margin-top: 20px;
+button {
+  border: solid 2px;
 }
 
-button:hover{
-    background-color: var(--secondary);
+center {
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: var(--secondary);
 }
