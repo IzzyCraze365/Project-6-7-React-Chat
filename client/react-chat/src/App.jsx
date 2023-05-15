@@ -84,12 +84,6 @@ function App() {
     setPassword(password);
     setIsAdmin(isAdmin);
 
-    //! No longer need the set - UseStates below since the editMessage route is not being used
-    // setWhen(when);
-    // setUser(user);
-    // setRoom(room);
-    // setBody(body);
-
     localStorage.setItem("token", newToken);
     localStorage.setItem("userID", userID);
     localStorage.setItem("firstName", firstName);
@@ -98,11 +92,6 @@ function App() {
     localStorage.setItem("password", password);
     localStorage.setItem("isAdmin", isAdmin);
     
-    //! No longer need to set localstorage on the items below since the editMessage route is not being used
-    // localStorage.setItem("when", when);
-    // localStorage.setItem("user", user);
-    // localStorage.setItem("room", room);
-    // localStorage.setItem("body", body);
   }
 
   function updateUser(
